@@ -241,7 +241,7 @@
       methods: {
         async fetchQuestions() {
           try {
-            const response = await fetch('/questions.json');
+            const response = await fetch('./questions.json');
             const data = await response.json();
             this.questions = data;
           } catch (error) {
