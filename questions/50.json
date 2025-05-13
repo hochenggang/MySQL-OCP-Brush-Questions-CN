@@ -1,12 +1,12 @@
 {
-  "question": "使用带有新配置的旧服务器，MySQL Server 无法启动。请查看以下错误日志快照：\n\n```\n190925 12:49:05 InnoDB: Initializing buffer pool, size = 3.0G\n190925 12:49:05 InnoDB: completed Initializing of buffer pool\nInnoDB: Error: log file ./ib_logfile0 is of different size 0 5242880 bytes\nInnoDB: than specified in the .cnf file 0 26214400 bytes!\n190925 12:49:05 [ERROR] Plugin 'InnoDB' in it function returned error.\n190925 12:49:05 [ERROR] Plugin 'InnoDB' registration as a STORAGE ENGINE failed.\n190925 12:49:05 [ERROR] Aborting\n190925 12:49:05 [Note] /usr/sbin/mysqld: shutdown complete\n```\n哪个操作能允许服务器启动？",
-  "selections": {
-    "A": "执行 `mysqladmin flush-logs`",
-    "B": "创建大小为 26214400 的新 `ib_logfile0` 文件",
-    "C": "从文件系统中删除 `ib_logfile0` 和 `ib_logfile1` 文件",
-    "D": "首先运行 `mysqld --initialize` 来刷新 `ib_logfile` 的大小"
-  },
-  "answers": ["C"],
-  "summary": "### 选项分析\n- **A. 执行 `mysqladmin flush-logs`**：此命令用于刷新二进制日志或通用查询日志，并非解决 InnoDB 日志文件大小不匹配问题的有效方法，因此不正确。\n- **B. 创建大小为 26214400 的新 `ib_logfile0` 文件**：手动创建符合配置要求的日志文件虽然理论上可行，但不符合最佳实践，可能引发其他潜在问题，因此不推荐。\n- **C. 从文件系统中删除 `ib_logfile0` 和 `ib_logfile1` 文件**：删除现有日志文件后，MySQL 启动时会根据配置文件重新生成正确的日志文件，这是解决该问题的标准方法，因此正确。\n- **D. 首先运行 `mysqld --initialize` 来刷新 `ib_logfile` 的大小**：此操作会重新初始化整个数据目录，可能导致数据丢失，风险较高，通常仅在极端情况下使用，因此不推荐。\n\n### 考点总结\n本题考查了 MySQL 数据库管理员对 InnoDB 存储引擎日志文件管理的理解和故障排查能力，涉及的知识点包括：\n- InnoDB 日志文件的作用及其与配置文件的关系。\n- 解决 InnoDB 日志文件大小不匹配问题的最佳实践。\n- MySQL 启动失败时的常见错误日志分析。",
-  "suggestion": "### 应试技巧\n1. **精准定位问题**：仔细阅读错误日志，快速识别问题的核心（如本题中的日志文件大小不匹配）。\n2. **排除干扰项**：结合考试大纲和实际经验，优先排除明显无关或高风险的选项（如 A 和 D）。\n3. **熟悉最佳实践**：掌握官方推荐的操作方法（如删除日志文件让 MySQL 自动重建），避免选择过于激进或复杂的解决方案。\n\n### 学习建议\n1. **深入理解 InnoDB 架构**：学习 InnoDB 如何存储数据和日志，重点掌握重做日志文件的作用及管理。\n2. **模拟实际场景**：通过实验环境模拟常见的 MySQL 启动失败问题，熟悉错误日志的解读和解决方案。\n3. **复习考试大纲**：重点关注“Server Installation and Configuration”和“Monitoring and Maintenance”模块，这些内容常出现在 OCP 考试中。"
+"question":"检查以下命令和输出：```sql\nmysql> SHOW GLOBAL STATUS LIKE '%Firewall%';\n```\n输出如下：```\n+---------------------------+-------+\n| Variable_name             | Value |\n+---------------------------+-------+\n| Firewall_access_denied    | 7     |\n| Firewall_access_granted   | 4     |\n| Firewall_access_suspicious| 3     |\n| Firewall_cached_entries   | 11    |\n+---------------------------+-------+\n```\n下列哪项描述是正确的？",
+"selections":{
+"A":"`Firewall_access_denied` 是被拒绝的连接尝试次数。",
+"B":"`Firewall_cached_entries` 是在查询缓存中，为处于 `DETECTING` 模式的用户找到的语句数。",
+"C":"`Firewall_access_granted` 是白名单主机允许的连接数。",
+"D":"`Firewall_access_suspicious` 是在 `DETECTING` 模式下记录为可疑用户的语句数。"
+},
+"answers":["D"],
+"summary":"### 选项分析\n- **A.** 正确性有限。虽然 `Firewall_access_denied` 的确表示被拒绝的次数，但其范围不仅限于“连接尝试”，还包括因安全规则而被拒绝的查询操作。\n- **B.** 错误。`Firewall_cached_entries` 表示 MySQL Enterprise Firewall 缓存中的条目数量，与查询缓存或 `DETECTING` 模式无关。\n- **C.** 错误。`Firewall_access_granted` 表示防火墙允许的连接或查询次数，而非特指白名单主机的连接。\n- **D.** 正确。`Firewall_access_suspicious` 明确表示在 `DETECTING` 模式下标记为可疑的语句数，符合题目要求。\n\n### 考点总结\n本题考查考生对 MySQL Enterprise Firewall 状态变量的理解，尤其是不同模式（如 `PROTECTING` 和 `DETECTING`）下的行为差异以及各状态变量的具体含义。",
+"suggestion":"### 应试技巧\n1. **审题严谨**：注意题目中的细节，例如变量名和模式描述，避免因粗心而误解。\n2. **排除法优先**：对于多选题或易混淆的单选题，先排除明显错误的选项以缩小范围。\n3. **理解机制**：MySQL Enterprise Firewall 的工作原理是高频考点，建议熟练掌握其运行模式及相关变量。\n\n### 学习建议\n1. **熟悉官方文档**：MySQL 官方文档对防火墙模块的说明非常详尽，可作为权威参考资料。\n2. **实践验证**：通过实际操作 MySQL 数据库，观察相关状态变量的变化，加深理解。\n3. **模拟练习**：结合考试大纲中的其他高频考点（如安全性、性能优化等），进行综合练习以提高应试能力。"
 }
