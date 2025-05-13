@@ -1,0 +1,12 @@
+{
+    "question": "查看以下成功执行的命令：\n```\n$ mysqlrouter --bootstrap user@hostname:port --directory=directory_path\n```\n该命令会执行下列哪项活动？",
+    "selections": {
+        "A": "MySQL Router 是根据 `directory_path` 中文件中的信息配置的。",
+        "B": "重新启动 MySQL Router。",
+        "C": "MySQL Router 根据从 InnoDB 集群元数据服务器检索的信息配置所有集群节点。",
+        "D": "MySQL Router 根据从 InnoDB 集群数据服务器检索的信息配置其自身。"
+    },
+    "answers": ["D"],
+    "summary": "### 选项分析\n- **A**: 错误。`--directory` 参数指定的是 MySQL Router 的工作目录，但 `--bootstrap` 命令的主要作用是从 InnoDB 集群中获取元数据并配置 MySQL Router，而不是直接使用 `directory_path` 中的文件。\n- **B**: 错误。`--bootstrap` 命令不会重启 MySQL Router，而是用于初始化或重新配置 MySQL Router。\n- **C**: 错误。`--bootstrap` 命令是从 InnoDB 集群的元数据服务器（如 InnoDB Cluster 的 metadata server）中检索信息，而不是配置所有集群节点。\n- **D**: 正确。`--bootstrap` 命令的作用是通过连接到指定的 InnoDB 集群元数据服务器（`user@hostname:port`），从其中检索必要的元数据信息，并根据这些信息配置 MySQL Router 本身。\n\n### 考点总结\n- **MySQL Router 的 `--bootstrap` 命令**：用于初始化或重新配置 MySQL Router，使其能够与 InnoDB 集群通信。该命令会从 InnoDB 集群的元数据服务器中检索必要的信息，包括集群拓扑、节点地址等，并将其存储在本地配置文件中。\n- **InnoDB 集群的元数据服务器**：InnoDB 集群中的一个特殊节点，负责管理集群的元数据，包括节点列表、状态等信息。`--bootstrap` 命令需要连接到该元数据服务器以获取配置信息。\n- **MySQL Router 的工作原理**：MySQL Router 是一个中间层代理，用于简化客户端对 InnoDB 集群的访问。它通过解析客户端请求并将请求路由到适当的数据库节点来实现高可用性和负载均衡。`--bootstrap` 命令是配置 MySQL Router 的关键步骤之一。",
+    "suggestion": "### 应试技巧\n1. **理解核心概念**：掌握 MySQL Router 的基本功能及其与 InnoDB 集群的关系，特别是 `--bootstrap` 命令的作用和参数含义。\n2. **关注命令细节**：注意命令中的参数，如 `--bootstrap` 和 `--directory` 的作用，以及它们如何影响 MySQL Router 的配置。\n3. **排除法**：对于多选题，可以先排除明显错误的选项，逐步缩小答案范围。\n\n### 学习建议\n1. **深入学习 MySQL Router**：熟悉 MySQL Router 的安装、配置和常用命令，尤其是 `--bootstrap`、`--editing` 等关键命令。\n2. **实践操作**：通过实际部署 InnoDB 集群和 MySQL Router，亲身体验 `--bootstrap` 命令的效果，加深理解。\n3. **查阅官方文档**：参考 MySQL 官方文档中关于 MySQL Router 和 InnoDB 集群的相关章节，确保对知识点有全面的掌握。\n4. **模拟练习**：多做类似的题目，尤其是涉及命令行操作和配置的题目，提高解题速度和准确性。"
+}

@@ -1,0 +1,14 @@
+{
+    "question": "四个节点配置为使用循环复制。检查每个节点的下列配置参数：\n- `slave_parallel_type=DATABASE`\n- `slave_parallel_workers=4`\n- `slave_preserve_commit_order=0`\n以下哪项描述是正确的？",
+    "selections": {
+        "A": "设置 `slave_parallel_type=DATABASE` 不适用于循环复制；应将其设置为 `LOGICAL_CLOCK`。",
+        "B": "跨数据库约束条件可能导致数据库不一致。",
+        "C": "每个从属线程负责更新特定数据库。",
+        "D": "将 `slave_preserve_commit_order` 设置为 `ON` 可以提高数据一致性。",
+        "E": "将 `transaction_allow_batching` 设置为 `ON` 可以提高数据一致性。",
+        "F": "增加 `slave_parallel_workers` 可以提高高可用性。"
+    },
+    "answers": ["B"],
+    "summary": "#### 选项分析\n- **A**: 错误。`slave_parallel_type=DATABASE` 是适用于循环复制的配置，无需修改为 `LOGICAL_CLOCK`。\n- **B**: 正确。在循环复制中，跨数据库的外键约束可能导致数据不一致，因为事务的顺序可能被打破。\n- **C**: 错误。`slave_parallel_workers` 的配置并不意味着每个线程负责特定数据库，而是并行处理多个事务。\n- **D**: 错误。`slave_preserve_commit_order` 的默认值为 `OFF`，设置为 `ON` 可能会影响性能，并不一定提高一致性。\n- **E**: 错误。`transaction_allow_batching` 与循环复制无关，且其作用是优化事务提交，而非提高一致性。\n- **F**: 错误。增加 `slave_parallel_workers` 可以提高性能，但与高可用性无直接关系。\n\n#### 考点总结\n- 循环复制（Circular Replication）的配置和潜在问题。\n- `slave_parallel_type` 和 `slave_parallel_workers` 的作用。\n- 数据库一致性问题，尤其是跨数据库约束的影响。\n- 配置参数对性能和一致性的影响。",
+    "suggestion": "#### 应试技巧\n1. **理解核心概念**：熟悉循环复制的工作原理，包括其配置参数的作用和潜在风险。\n2. **关注细节**：题目中的配置参数（如 `slave_parallel_type`、`slave_parallel_workers` 等）需要结合实际场景分析其影响。\n3. **排除法**：对于不确定的选项，可以通过排除明显错误的答案缩小范围。\n\n#### 学习建议\n1. **深入学习循环复制**：掌握循环复制的配置方法、潜在问题（如数据不一致）以及解决策略。\n2. **熟悉关键参数**：重点学习 `slave_parallel_type`、`slave_parallel_workers`、`slave_preserve_commit_order` 等参数的作用和适用场景。\n3. **实践操作**：通过实验环境配置循环复制，观察不同参数对系统行为的影响。\n4. **复习相关文档**：参考 MySQL 官方文档关于复制和高可用性的章节，加深理解。"
+}

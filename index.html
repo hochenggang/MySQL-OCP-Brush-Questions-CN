@@ -161,7 +161,14 @@
     .footer {
       text-align: center;
       margin-top: 40px;
-      color: #888;
+      color: #8e8e8e;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      font-size: 0.9rem;
+      font-weight: lighter;
+
     }
 
     label * {
@@ -169,6 +176,7 @@
     }
   </style>
 </head>
+
 
 
 <body>
@@ -182,7 +190,11 @@
       </div>
     </div>
 
-    <div v-if="currentQuestion">
+    <div v-if="loading">
+      <p>加载中...</p>
+    </div>
+
+    <div v-if="currentQuestion && !loading">
       <div class="box">
         <span>{{ currentIndex + 1 }}/{{ questions.length }}</span>
         <div v-html="renderMarkdown(currentQuestion.question)"></div>
@@ -206,7 +218,6 @@
         <div class="box"><strong>正确答案：</strong>{{ result.correctAnswers.join(', ') }}</div>
         <div class="box" v-html="renderMarkdown(result.summary)"></div>
         <div class="box" v-html="renderMarkdown(result.suggestion)"></div>
-
       </div>
     </div>
 
@@ -215,7 +226,8 @@
     </div>
 
     <div class="footer">
-      <a href="https://github.com/hochenggang/MySQL-OCP-Brush-Questions-CN">@Github</a>
+      <a href="https://github.com/hochenggang/MySQL-OCP-Brush-Questions-CN">代码仓库</a>|<a href="#"
+        @click="clearCache">清空缓存</a>
     </div>
   </div>
 
@@ -225,12 +237,14 @@
         return {
           questions: [],
           wrongQuestions: JSON.parse(localStorage.getItem('ocp_wrong_questions') || '[]'),
+          correctQuestions: JSON.parse(localStorage.getItem('ocp_correct_questions') || '[]'),
           currentIndex: 0,
           selectedAnswers: [],
           result: null,
           quizOver: false,
           mode: 'sequential', // sequential or random
-          currentQuestion: null
+          currentQuestion: null,
+          loading: true // 添加加载状态
         };
       },
       computed: {
@@ -240,14 +254,16 @@
       },
       methods: {
         async fetchQuestions() {
+          this.loading = true; // 开始加载时设置加载状态为 true
           try {
             const response = await fetch('./questions.json');
             const data = await response.json();
-            this.questions = data;
+            this.questions = data.filter(q => !this.correctQuestions.some(cq => cq.question === q.question));
           } catch (error) {
             console.error('加载题目失败:', error);
             alert('加载题目失败，请检查网络连接。');
           }
+          this.loading = false; // 加载完成后设置加载状态为 false
         },
         renderMarkdown(markdown) {
           return marked.parse(markdown);
@@ -292,7 +308,8 @@
           if (JSON.stringify(selected) === JSON.stringify(correctSorted)) {
             statusText = '完全正确';
             statusClass = 'correct';
-            this.removeFromWrongQuestions();
+            this.correctQuestions.push(this.currentQuestion);
+            localStorage.setItem('ocp_correct_questions', JSON.stringify(this.correctQuestions));
           } else if (selected.some(a => correct.includes(a))) {
             statusText = '部分正确';
             statusClass = 'partial';
@@ -321,10 +338,6 @@
             localStorage.setItem('ocp_wrong_questions', JSON.stringify(this.wrongQuestions));
           }
         },
-        removeFromWrongQuestions() {
-          this.wrongQuestions = this.wrongQuestions.filter(q => q.question !== this.currentQuestion.question);
-          localStorage.setItem('ocp_wrong_questions', JSON.stringify(this.wrongQuestions));
-        },
         nextQuestion() {
           this.currentIndex++;
           this.selectedAnswers = [];
@@ -336,6 +349,13 @@
             this.currentQuestion = null;
             this.quizOver = true;
           }
+        },
+        clearCache() {
+          const ok = confirm("清除所有做题记录吗？")
+          if (ok) {
+            localStorage.clear()
+            location.reload()
+          }
         }
       },
       mounted() {
@@ -346,6 +366,5 @@
     app.mount('#app');
   </script>
 </body>
-
 
 </html>
