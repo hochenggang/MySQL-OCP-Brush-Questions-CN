@@ -1,0 +1,14 @@
+{
+  "question": "可以使用哪两个工具或语句来监视 InnoDB 锁定的全局状态？",
+  "selections": {
+    "A": "`SHOW ENGINE INNODB STATUS;`：显示 InnoDB 存储引擎的详细状态信息，包括锁定、事务、缓存等。",
+    "B": "`SHOW STATUS;`：显示 MySQL 服务器的状态变量，其中包括与 InnoDB 锁定相关的统计信息。",
+    "C": "`SHOW TABLE STATUS;`：显示表的元数据信息，如存储引擎、索引数量、行数等。",
+    "D": "`INFORMATION_SCHEMA.INNODB_METRICS`：提供 InnoDB 引擎的性能指标和统计信息。",
+    "E": "`INFORMATION_SCHEMA.INNODB_TABLESTATS`：存储 InnoDB 表的统计信息，如行数、页数等。",
+    "F": "`INFORMATION_SCHEMA.STATISTICS`：存储表的索引统计信息。"
+  },
+  "answers": ["A", "B"],
+  "summary": "### 选项分析\n- **A. `SHOW ENGINE INNODB STATUS;`**：这是监视 InnoDB 锁定状态的核心工具，能够提供详细的锁定信息，包括行锁、表锁以及事务等待情况。\n- **B. `SHOW STATUS;`**：虽然不如 A 详细，但通过特定的状态变量（如 `Innodb_row_lock_current_waits` 和 `Innodb_row_lock_time_avg`），可以间接反映 InnoDB 锁定的全局状态。\n- **C. `SHOW TABLE STATUS;`**：仅显示表的元数据信息，不涉及锁定相关的内容，因此不符合题意。\n- **D. `INFORMATION_SCHEMA.INNODB_METRICS`**：尽管提供了性能指标，但并不直接包含锁定的全局状态。\n- **E. `INFORMATION_SCHEMA.INNODB_TABLESTATS`**：专注于表的统计信息，与锁定无关。\n- **F. `INFORMATION_SCHEMA.STATISTICS`**：主要用于索引统计，与锁定无直接关系。\n\n### 考点总结\n本题考查的是考生对 MySQL 监控工具的理解，特别是如何通过不同工具查看 InnoDB 锁定的全局状态。重点在于掌握 `SHOW ENGINE INNODB STATUS;` 和 `SHOW STATUS;` 的使用场景及其在锁定监控中的作用。",
+  "suggestion": "### 应试技巧\n1. **熟悉核心命令**：对于涉及 InnoDB 锁定的问题，优先考虑 `SHOW ENGINE INNODB STATUS;`，因为它是最直接的工具。\n2. **理解状态变量的作用**：`SHOW STATUS;` 中的状态变量是间接但有效的监控手段，建议记下常见的与锁定相关的变量名称。\n3. **排除法**：如果不确定答案，可以通过排除明显无关的选项（如表元数据或索引统计）缩小范围。\n\n### 学习建议\n- **深入学习官方文档**：MySQL 官方文档对每个命令和视图的功能有详尽说明，建议结合实践加深理解。\n- **多做实验**：在测试环境中模拟锁定场景，观察 `SHOW ENGINE INNODB STATUS;` 和 `SHOW STATUS;` 的输出结果，增强直观感受。\n- **关注考试大纲**：根据大纲内容，明确需要掌握的重点工具和命令，避免在次要知识点上浪费时间。"
+}

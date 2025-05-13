@@ -1,0 +1,13 @@
+{
+  "question": "以下哪两项描述是正确的？\n\n```plaintext\n*************************** 1. row ***************************\nEXPLAIN:\n-> Sort: <temporary>.Population DESC (actual time=8.306..8.431 rows=125 loops=1)\n    -> Nested Loop Inner Join (cost=241.12 rows=205) (actual time=0.141..7.787 rows=125 loops=1)\n        -> Filter: (world.country.Continent = 'Asia') (cost=25.40 rows=34) (actual time=0.064..0.820 rows=51 loops=1)\n            -> Table scan on country (cost=25.40 rows=239) (actual time=0.059..0.359 rows=239 loops=1)\n        -> Filter: (world.city.Population > 1000000) (cost=4.53 rows=6) (actual time=0.030..0.131 rows=2 loops=1)\n            -> Index lookup on city using CountryCode (CountryCode=world.country.Code) (cost=4.53 rows=18) (actual time=0.023..0.096 rows=51 loops=1)\n```",
+  "selections": {
+    "A": "对行进行排序需要 8 毫秒以上。",
+    "B": "优化程序估计，`country` 表中的 51 行包含 `Continent='Asia'`。",
+    "C": "结果中包括 `city` 表中的 35 行。",
+    "D": "首先访问 `country` 表，然后加入 `city` 表。",
+    "E": "该查询只返回 125 行。"
+  },
+  "answers": ["D", "E"],
+  "summary": "### 选项分析\n- **A. 对行进行排序需要 8 毫秒以上**：错误。虽然 `actual time=8.306..8.431` 确实超过了 8 毫秒，但“排序”这一表述忽略了操作的完整上下文（如临时表的创建和填充），因此不够精确。\n- **B. 优化程序估计，`country` 表中的 51 行包含 `Continent='Asia'`**：错误。优化程序的估计值为 `rows=34`，而实际返回的行数为 `rows=51`，题目混淆了“估计值”与“实际值”。\n- **C. 结果中包括 `city` 表中的 35 行**：错误。`EXPLAIN` 输出显示，实际从 `city` 表返回的行数为 `rows=51`，而非 35 行。\n- **D. 首先访问 `country` 表，然后加入 `city` 表**：正确。`EXPLAIN` 输出表明查询首先对 `country` 表进行了全表扫描，随后通过 `Nested Loop Inner Join` 将其与 `city` 表连接。\n- **E. 该查询只返回 125 行**：正确。`EXPLAIN` 输出的最终结果行数为 `rows=125`。\n\n### 考点总结\n本题主要考察考生对 MySQL 查询执行计划（`EXPLAIN` 输出）的理解能力，特别是如何分析查询的各个阶段（如表访问顺序、过滤条件、排序操作等）。此外，还涉及对优化器估计值与实际值的区分，以及对查询结果行数的判断。",
+  "suggestion": "### 应试技巧\n1. **仔细阅读 `EXPLAIN` 输出**：重点关注 `rows`、`actual time` 和操作顺序等关键字段，避免遗漏重要信息。\n2. **区分估计值与实际值**：优化器的估计值（`rows`）可能与实际返回的行数不同，需明确题目所指。\n3. **理解术语的精确含义**：例如，“排序”不仅指代排序算法的执行，还包括临时表的创建和结果返回等过程。\n\n### 学习建议\n1. **掌握 `EXPLAIN` 的核心字段**：熟悉 `type`、`rows`、`filtered`、`Extra` 等字段的含义及其在查询优化中的作用。\n2. **实践分析复杂查询**：通过实际案例练习如何解读 `EXPLAIN` 输出，并尝试优化查询性能。\n3. **参考官方文档**：深入学习 MySQL 官方文档中关于查询优化的部分，理解优化器的工作原理及常见优化策略。"
+}

@@ -1,0 +1,12 @@
+{
+  "question": "对 InnoDB 表启用透明数据加密的正确语法是什么？",
+  "selections": {
+    "A": "`ALTER TABLE t1 SET TDE = 'ON';`",
+    "B": "`ALTER TABLE t1 ADD ENCRYPTED_TABLESPACE = 'Y';`",
+    "C": "`ALTER TABLE t1 WITH ENCRYPTION USING MASTER KEY;`",
+    "D": "`ALTER TABLE t1 ENCRYPTION = 'Y';`"
+  },
+  "answers": ["D"],
+  "summary": "### 选项分析\n- **A. `ALTER TABLE t1 SET TDE = 'ON';`**：此语法错误，MySQL 中不存在 `SET TDE` 的用法。\n- **B. `ALTER TABLE t1 ADD ENCRYPTED_TABLESPACE = 'Y';`**：此语法不符合 MySQL 规范，`ADD ENCRYPTED_TABLESPACE` 并非有效语句。\n- **C. `ALTER TABLE t1 WITH ENCRYPTION USING MASTER KEY;`**：此语法错误，虽然 MySQL 支持透明数据加密，但该语句格式不正确。\n- **D. `ALTER TABLE t1 ENCRYPTION = 'Y';`**：此语法正确，符合 MySQL 启用 InnoDB 表透明数据加密的标准。\n\n### 考点总结\n本题考查的是 MySQL 中 InnoDB 表透明数据加密（TDE）的语法知识。考生需熟悉官方文档中关于加密表的正确配置方法，并能识别常见错误语法。",
+  "suggestion": "### 应试技巧\n- **熟记官方语法**：MySQL 的透明数据加密语法明确且固定，牢记标准写法可快速排除干扰项。\n- **注意拼写和格式**：题目中可能存在拼写错误或人为疏漏，仔细检查选项中的关键字是否符合规范。\n\n### 学习建议\n- **深入理解透明数据加密机制**：不仅掌握语法，还需了解其工作原理及应用场景。\n- **多实践命令操作**：通过实际操作验证语句的正确性，加深记忆。\n- **参考考试大纲中的安全模块**：重点关注加密、权限管理等安全相关内容，确保全面掌握。"
+}

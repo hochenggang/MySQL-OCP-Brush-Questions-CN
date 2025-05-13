@@ -1,0 +1,7 @@
+{
+"question":"执行以下语句后，哪些存储引擎会返回`test`表的非空记录集？语句如下：```sql TRUNCATE test; BEGIN; INSERT INTO test (id, name) VALUES(1, 'Hello'); ROLLBACK; SELECT id FROM test; ```",
+"selections":{"A":"MEMORY","B":"NDB","C":"ARCHIVE","D":"BLACKHOLE","E":"InnoDB"},
+"answers":["A","C"],
+"summary":"本题考查MySQL不同存储引擎对事务的支持特性。`TRUNCATE`清空表数据后，紧接着在事务中插入一条记录，但随后执行了`ROLLBACK`回滚事务。对于支持事务的存储引擎（如InnoDB、NDB），`ROLLBACK`会撤销插入操作，查询结果为空；而对不支持事务的存储引擎（如MEMORY、ARCHIVE），`ROLLBACK`无效，插入的数据仍然存在，因此查询结果非空。BLACKHOLE引擎始终返回空结果。考点包括：存储引擎事务特性、DDL与DML的区别、事务控制语句的行为。",
+"suggestion":"掌握MySQL常见存储引擎的核心特性是应对此类问题的关键。建议重点理解InnoDB、MEMORY、ARCHIVE、BLACKHOLE等引擎在事务处理、数据持久化、日志机制等方面的差异。应试时注意题目中的隐含条件，如事务是否生效、语句是否可回滚等。结合考试大纲，加强对MySQL架构和存储机制的理解，有助于提高解题准确率。"
+}

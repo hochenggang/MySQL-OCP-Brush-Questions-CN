@@ -1,0 +1,14 @@
+{
+  "question": "必须查看新的、大型、繁忙的报告数据仓库 MySQL 实例的配置选项。下列参数中，哪两项配置可以满足长期存储需求？\n\n```\n[mysql]\ninnodb_data_file_path=\n```",
+  "selections": {
+    "A": "`ibdata1:12M:autoextend; ibdata2: 12M: autoextend`",
+    "B": "`ibdata1:12M`",
+    "C": "`ibdata1:12M; ibdata2:12M; ibdata3:12M`",
+    "D": "`ibdata1:12M; /tmp/ ibdata2:12M autoextend`",
+    "E": "`ibdata1:12M: autoextend`",
+    "F": "`ibdata1:12M; ibdata2:12M: autoextend`"
+  },
+  "answers": ["E", "F"],
+  "summary": "### 选项分析\n- **A. `ibdata1:12M:autoextend; ibdata2: 12M: autoextend`**：虽然支持自动扩展，但多个文件同时设置 `autoextend` 可能导致管理复杂性增加，且不推荐。\n- **B. `ibdata1:12M`**：固定大小的文件无法满足长期存储需求，容易因空间不足导致问题。\n- **C. `ibdata1:12M; ibdata2:12M; ibdata3:12M`**：多个固定大小文件同样无法动态扩展，难以应对数据增长。\n- **D. `ibdata1:12M; /tmp/ ibdata2:12M autoextend`**：将数据文件放置在 `/tmp` 目录下不符合安全性要求，可能导致数据丢失。\n- **E. `ibdata1:12M: autoextend`**：单一文件配置并启用 `autoextend`，简洁高效，符合长期存储需求。\n- **F. `ibdata1:12M; ibdata2:12M: autoextend`**：包含两个文件，其中一个支持自动扩展，虽稍显复杂，但仍能满足长期存储需求。\n\n### 考点总结\n本题考查对 `innodb_data_file_path` 参数的理解及其配置能力。重点在于如何通过合理的配置实现系统表空间的动态扩展，以适应大型数据仓库实例的长期存储需求。",
+  "suggestion": "### 应试技巧\n1. **理解关键字**：注意题目中的关键词（如“长期存储需求”），结合选项筛选出最符合需求的配置。\n2. **排除法**：优先排除明显错误的选项（如固定大小文件或路径不合理的情况），缩小选择范围。\n3. **最佳实践优先**：在多个看似合理的选项中，优先选择符合 MySQL 最佳实践的配置（如单一文件自动扩展）。\n\n### 学习建议\n1. **深入掌握 InnoDB 存储机制**：熟悉 `innodb_data_file_path` 的语法及常见配置场景，了解 `autoextend` 的作用和限制。\n2. **关注实际应用**：结合生产环境中的实际案例，理解不同配置对性能和可维护性的影响。\n3. **参考官方文档**：MySQL 官方文档是权威的学习资源，建议定期查阅以更新知识体系。"
+}

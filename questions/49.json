@@ -1,0 +1,12 @@
+{
+  "question": "使用带有新配置的旧服务器，MySQL Server 无法启动。请查看以下错误日志快照：\n\n```\n190925 12:49:05 InnoDB: Initializing buffer pool, size = 3.0G\n190925 12:49:05 InnoDB: completed Initializing of buffer pool\nInnoDB: Error: log file ./ib_logfile0 is of different size 0 5242880 bytes\nInnoDB: than specified in the .cnf file 0 26214400 bytes!\n190925 12:49:05 [ERROR] Plugin 'InnoDB' in it function returned error.\n190925 12:49:05 [ERROR] Plugin 'InnoDB' registration as a STORAGE ENGINE failed.\n190925 12:49:05 [ERROR] Aborting\n190925 12:49:05 [Note] /usr/sbin/mysqld: shutdown complete\n```\n哪个操作能允许服务器启动？",
+  "selections": {
+    "A": "执行 `mysqladmin flush-logs`",
+    "B": "创建大小为 26214400 的新 `ib_logfile0` 文件",
+    "C": "从文件系统中删除 `ib_logfile0` 和 `ib_logfile1` 文件",
+    "D": "首先运行 `mysqld --initialize` 来刷新 `ib_logfile` 的大小"
+  },
+  "answers": ["C"],
+  "summary": "### 选项分析\n- **A. 执行 `mysqladmin flush-logs`**：此命令用于刷新二进制日志或通用查询日志，并非解决 InnoDB 日志文件大小不匹配问题的有效方法，因此不正确。\n- **B. 创建大小为 26214400 的新 `ib_logfile0` 文件**：手动创建符合配置要求的日志文件虽然理论上可行，但不符合最佳实践，可能引发其他潜在问题，因此不推荐。\n- **C. 从文件系统中删除 `ib_logfile0` 和 `ib_logfile1` 文件**：删除现有日志文件后，MySQL 启动时会根据配置文件重新生成正确的日志文件，这是解决该问题的标准方法，因此正确。\n- **D. 首先运行 `mysqld --initialize` 来刷新 `ib_logfile` 的大小**：此操作会重新初始化整个数据目录，可能导致数据丢失，风险较高，通常仅在极端情况下使用，因此不推荐。\n\n### 考点总结\n本题考查了 MySQL 数据库管理员对 InnoDB 存储引擎日志文件管理的理解和故障排查能力，涉及的知识点包括：\n- InnoDB 日志文件的作用及其与配置文件的关系。\n- 解决 InnoDB 日志文件大小不匹配问题的最佳实践。\n- MySQL 启动失败时的常见错误日志分析。",
+  "suggestion": "### 应试技巧\n1. **精准定位问题**：仔细阅读错误日志，快速识别问题的核心（如本题中的日志文件大小不匹配）。\n2. **排除干扰项**：结合考试大纲和实际经验，优先排除明显无关或高风险的选项（如 A 和 D）。\n3. **熟悉最佳实践**：掌握官方推荐的操作方法（如删除日志文件让 MySQL 自动重建），避免选择过于激进或复杂的解决方案。\n\n### 学习建议\n1. **深入理解 InnoDB 架构**：学习 InnoDB 如何存储数据和日志，重点掌握重做日志文件的作用及管理。\n2. **模拟实际场景**：通过实验环境模拟常见的 MySQL 启动失败问题，熟悉错误日志的解读和解决方案。\n3. **复习考试大纲**：重点关注“Server Installation and Configuration”和“Monitoring and Maintenance”模块，这些内容常出现在 OCP 考试中。"
+}

@@ -1,0 +1,14 @@
+{
+  "question": "属于 InnoDB 集群的所有 MySQL Server 实例都配置并启用了 SSL。必须将 InnoDB 集群配置为使用 SSL 进行组通信。下列哪两项描述是正确的？",
+  "selections": {
+    "A": "如果仅为某些 InnoDB 集群成员启用了 SSL 组通信，并且 `--ssl-mode=REFERRED`，则通信将回退到未加密的连接。",
+    "B": "SSL 组通信需要使用一组额外的参数 `group_replication_recovery_*`。",
+    "C": "配置 SSL 组通信和配置 SSL 分布式恢复。",
+    "D": "启用 SSL 组通信，必须在创建集群时通过指定 `createCluster(memberSslMode: 'REQUIRED')`。",
+    "E": "必须从头开始解构和创建 InnoDB 集群，才能为组通信启用 SSL。",
+    "F": "可以通过设置 `group_replication_ssl_mode` 为集群（一次一个实例）启用 SSL 组通信。"
+  },
+  "answers": ["D", "F"],
+  "summary": "### 选项分析\n- **A**：错误。`--ssl-mode=REFERRED` 并不适用于 InnoDB 集群的组通信场景；组通信要求所有成员均启用 SSL，否则会导致失败。\n- **B**：错误。`group_replication_recovery_*` 参数与 SSL 组通信无关，主要用于控制分布式恢复。\n- **C**：错误。分布式恢复与 SSL 组通信是独立的概念，题目也未涉及相关讨论。\n- **D**：正确。在创建集群时明确指定 `memberSslMode: 'REQUIRED'` 是启用 SSL 组通信的关键步骤。\n- **E**：错误。无需解构整个集群即可启用 SSL 组通信，可通过调整现有配置实现。\n- **F**：正确。逐个实例设置 `group_replication_ssl_mode` 可以启用 SSL 组通信，尽管推荐在创建集群时统一配置。\n\n### 考点总结\n本题考察对 MySQL InnoDB 集群中 SSL 组通信配置的理解，包括如何启用 SSL、关键参数的作用以及常见误解的辨析。",
+  "suggestion": "### 应试技巧\n1. **理解核心概念**：重点关注 `createCluster(memberSslMode: 'REQUIRED')` 和 `group_replication_ssl_mode` 的作用，这是解答此类问题的核心。\n2. **排除干扰项**：注意区分组通信与分布式恢复的概念，避免被无关参数或绝对性表述误导。\n3. **结合实际操作**：熟悉 MySQL 官方文档中关于组复制和 SSL 配置的具体说明，理论结合实践更易掌握。\n\n### 学习建议\n- **官方文档优先**：深入阅读 MySQL 官方文档中关于 InnoDB 集群和组复制的部分，特别是 SSL 配置章节。\n- **实验验证**：搭建实验环境，尝试在不同场景下启用和禁用 SSL 组通信，观察其行为差异。\n- **重点记忆**：记住 `memberSslMode` 和 `group_replication_ssl_mode` 的用途及区别，这些是考试中的高频考点。"
+}

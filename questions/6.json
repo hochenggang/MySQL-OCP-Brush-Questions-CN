@@ -1,0 +1,12 @@
+{
+  "question": "分析下面的 SQL 语句：\n```sql\nUPDATE world.city SET Population = Population * 1.1 \nWHERE Countrycode IN (SELECT code FROM world.country WHERE continent = 'Asia');\n```\n哪组权限允许 Tom 执行此 SQL 语句？",
+  "selections": {
+    "A": "GRANT UPDATE ON 'world'.'city' TO 'tom'@'%';\nGRANT SELECT ON 'world'.'country' TO 'tom'@'%';",
+    "B": "GRANT UPDATE ON 'world'.* TO 'tom'@'%';\nGRANT ALL PRIVILEGES ON 'world'.'country' TO 'tom'@'%';",
+    "C": "GRANT UPDATE ON 'world'.'city' TO 'tom'@'%';\nGRANT SELECT ON 'world'.* TO 'tom'@'%';",
+    "D": "GRANT ALL PRIVILEGES ON 'world'.'city' TO 'tom'@'%';\nGRANT SELECT ('code') ON 'world'.'country' TO 'tom'@'%';"
+  },
+  "answers": ["C"],
+  "summary": "选项 C 提供了执行 `UPDATE` 和子查询所需的必要权限：`UPDATE` 权限确保可以更新 `world.city` 表，`SELECT` 权限确保可以读取 `world.country` 表中的数据。尽管授权范围比实际需求更广泛，但在 MySQL 中是可行的。选项 A 的子查询权限不够明确，选项 B 的授权范围过于宽泛，选项 D 存在语法错误且授权范围不准确。",
+  "suggestion": "在授权时，应尽量做到权限的最小化，避免授予不必要的权限。对于复杂的 SQL 语句（如包含子查询的 `UPDATE` 语句），需确保用户同时具备主表的 `UPDATE` 权限和子查询表的 `SELECT` 权限。建议复习 MySQL 的权限管理机制，特别是如何为特定用户授予精确的权限。"
+}

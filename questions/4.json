@@ -1,0 +1,7 @@
+{
+"question":"哪条语句可以自动为所有用户授予所有角色？",
+"selections":{"A":"SET DEFAULT ROLE ALL TO '*@%';","B":"SET PERSIST mandatory_roles=ALL;","C":"SET ROLE ALL;","D":"SET PERSIST activate_all_roles_on_login=ON;"},
+"answers":["B"],
+"summary":"选项 B `SET PERSIST mandatory_roles=ALL;` 是正确答案。该语句通过持久化设置，将 `mandatory_roles` 配置为 `ALL`，这意味着所有用户在登录时都会自动激活所有可用角色。`mandatory_roles` 明确指定了必须激活的角色集合，适用于全局范围且对所有用户生效。\n\n- 选项 A `SET DEFAULT ROLE ALL TO '*@%';` 设置了默认角色，但并未实际授予角色，仅定义了哪些角色是默认激活的。\n- 选项 C `SET ROLE ALL;` 是一个会话级别的操作，仅影响当前用户，无法满足题目要求。\n- 选项 D `SET PERSIST activate_all_roles_on_login=ON;` 虽然也能实现类似效果，但它是一个更通用的开关，不如 `mandatory_roles` 精确。\n\n考点总结：MySQL 的角色管理机制、持久化配置 (`PERSIST`)、以及全局变量（如 `mandatory_roles` 和 `activate_all_roles_on_login`）的作用。",
+"suggestion":"应试技巧：理解 MySQL 中角色管理和权限控制的核心概念，尤其是 `SET ROLE`、`SET DEFAULT ROLE`、以及 `mandatory_roles` 和 `activate_all_roles_on_login` 的区别。考试中常考角色激活方式及其作用范围（会话级 vs 全局级），需要结合具体语境判断。\n学习建议：深入掌握 MySQL 的安全模块，特别是与用户权限、角色管理相关的系统变量和 SQL 命令。建议查阅官方文档中关于角色管理和持久化配置的相关内容，并通过实验验证不同命令的行为差异，以加深理解。"
+}

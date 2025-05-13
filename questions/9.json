@@ -1,0 +1,14 @@
+{
+  "question": "用户在尝试从 `192.0.2.5` 连接并使用 `mysql_native_password` 密码身份验证插件连接时报告错误。检查以下命令和输出，确定导致该错误的原因：\n\n```sql\nSUM_CONNECT_ERRORS: 0\nCOUNT_HOST_BLOCKED_ERRORS: 0\nCOUNT_NAMEINFO_TRANSIENT_ERRORS: 0\nCOUNT_NAMEINFO_PERMANENT_ERRORS: 0\nCOUNT_ADDRINFO_TRANSIENT_ERRORS: 0\nCOUNT_ADDRINFO_PERMANENT_ERRORS: 0\nCOUNT_FCRDNS_ERRORS: 0\nCOUNT_HOST_ACL_ERRORS: 0\nCOUNT_NO_AUTH_PLUGIN_ERRORS: 367\nCOUNT_HANDSHAKE_ERRORS: 0\nCOUNT_PROXY_USER_ERRORS: 0\nCOUNT_PROXY_USER_ACL_ERRORS: 0\nCOUNT_AUTHENTICATION_ERRORS: 0\n1 row in set (0.00 sec)\n```",
+  "selections": {
+    "A": "thread_cache 太小。",
+    "B": "用户账户用于验证的密码是使用 mysql_native_password 插件定义。",
+    "C": "max_connections 太小。",
+    "D": "skip_name_resolve 已启用。",
+    "E": "尝试连接时没有有效的用户账户或密码。",
+    "F": "客户端与 MySQL 实例之间的网络连接问题。"
+  },
+  "answers": ["B"],
+  "summary": "从提供的命令输出中可以看出，`COUNT_NO_AUTH_PLUGIN_ERRORS` 的值为 367，而其他错误计数器均为 0。这表明问题与身份验证插件相关，而不是网络、资源限制或权限配置的问题。选项 B 提到用户账户的密码是使用 `mysql_native_password` 插件定义的，这与题目中提到的身份验证方式一致。如果服务器端未正确启用或支持该插件，则可能导致连接失败，因此这是最可能的原因。",
+  "suggestion": "考生应熟悉 MySQL 的身份验证机制及相关的错误计数器含义，特别是与认证插件相关的指标如 `COUNT_NO_AUTH_PLUGIN_ERRORS` 和 `COUNT_AUTHENTICATION_ERRORS`。同时，掌握如何检查和配置身份验证插件（如 `mysql_native_password`）将有助于快速定位此类问题。建议通过实际操作演练常见连接故障，并结合日志和系统变量进行分析。此外，复习考试大纲中的 'Security' 部分，尤其是关于身份验证插件的内容，以确保对相关知识点有深入理解。"
+}

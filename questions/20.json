@@ -1,0 +1,12 @@
+{
+"question":"MySQL 安装在具有以下配置的 Linux 服务器上：```[mysqld]\nUser=mysql\ndatadir=/data/mysql``` 哪个方法将默认设置为用于验证用户账户密码的 `SHA-256` 散列？",
+"selections":{
+"A":"在配置文件中添加 `default_authentication_plugin=sha256_password`",
+"B":"在配置文件中添加 `default_authentication_plugin=mysql_native_password`",
+"C":"在 MySQL 实例中定义 `CREATE USER ''@'%' IDENTIFIED WITH sha256_password;`",
+"D":"在配置文件中设置 `validate-user-plugin-caching_sha2_password`"
+},
+"answers":["A"],
+"summary":"### 选项分析\n- **A. 在配置文件中添加 `default_authentication_plugin=sha256_password`**：此选项通过在 MySQL 配置文件中正确设置 `default_authentication_plugin=sha256_password`，全局性地将默认认证插件更改为基于 `SHA-256` 散列的 `sha256_password`，符合题目需求。\n- **B. 在配置文件中添加 `default_authentication_plugin=mysql_native_password`**：此选项错误，因为 `mysql_native_password` 使用较弱的加密算法（如 `SHA-1`），不符合题目要求。\n- **C. 在 MySQL 实例中定义 `CREATE USER ''@'%' IDENTIFIED WITH sha256_password;`**：此选项仅对特定用户生效，不能设置为全局默认认证插件，因此不满足要求。\n- **D. 在配置文件中设置 `validate-user-plugin-caching_sha2_password`**：此选项存在语法错误且含义不明确，配置项无效。\n\n### 考点总结\n本题考查了 MySQL 的用户认证机制以及如何通过配置文件设置默认认证插件。重点在于理解 `default_authentication_plugin` 参数的作用及其与不同认证插件（如 `sha256_password` 和 `mysql_native_password`）的关系。",
+"suggestion":"### 应试技巧\n1. 理解核心概念：熟悉 MySQL 的认证插件（如 `sha256_password`、`mysql_native_password` 和 `caching_sha2_password`）及其应用场景。\n2. 注意全局性：题目中要求“默认设置”，因此答案必须能够全局影响所有用户，而非仅作用于特定对象。\n3. 排查干扰项：对于看似合理的选项（如 C 和 D），需仔细检查其是否真正满足题目要求。\n\n### 学习建议\n- **理论学习**：深入掌握 MySQL 用户认证相关的参数和配置文件选项，尤其是 `default_authentication_plugin` 的作用。\n- **实践操作**：通过实验验证不同认证插件的效果，例如使用 `sha256_password` 创建用户并测试连接。\n- **文档阅读**：参考官方文档了解最新版本中认证插件的变化，确保知识更新及时。\n- **模拟练习**：多做类似题目，强化对配置文件和命令行操作的理解与记忆。"
+}

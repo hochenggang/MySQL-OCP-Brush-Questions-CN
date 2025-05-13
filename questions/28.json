@@ -1,0 +1,14 @@
+{
+  "question": "查看在 InnoDB Cluster 上成功执行的命令 `dba.dropMetadataSchema()`，下列哪两项描述是正确的？",
+  "selections": {
+    "A": "该命令删除 `mysql_innodb_cluster_metadata` 模式，但会对其进行重新创建。",
+    "B": "从集群的所有可访问成员中删除 `mysql_innodb_cluster_metadata` 模式。",
+    "C": "将取消组复制并清除所有元数据。",
+    "D": "组复制仍可运行，但必须在 MySQL Shell 下重新导入 InnoDB Cluster。",
+    "E": "从建立连接的实例中删除了 `mysql_innodb_cluster_metadata` 模式。",
+    "F": "MySQL Router 驱动的连接不受命令的影响。"
+  },
+  "answers": ["B", "D"],
+  "summary": "### 选项分析\n- **A**：错误，`dba.dropMetadataSchema()` 只删除元数据模式，不会自动重新创建。\n- **B**：正确，该命令从集群的所有成员中删除 `mysql_innodb_cluster_metadata` 模式。\n- **C**：错误，组复制不会被停止或取消。\n- **D**：正确，组复制继续运行，但需要重新导入 InnoDB Cluster 配置。\n- **E**：部分正确但表述不准确，应为“从所有成员中删除”。\n- **F**：错误，尽管不影响 MySQL Router 的直接连接，但可能导致其无法正常识别集群成员。\n\n### 考点总结\n此题考查对 `dba.dropMetadataSchema()` 命令的理解，涉及 InnoDB Cluster 和组复制的核心概念。重点在于理解元数据模式的作用及其删除后的影响。",
+  "suggestion": "### 应试技巧\n1. **抓住关键词**：如“删除元数据模式”、“组复制状态”等，明确命令的功能。\n2. **排除明显错误选项**：例如 A 中的“重新创建”、C 中的“取消组复制”均与实际行为不符。\n3. **对比选项差异**：如 B 和 E，注意范围的不同（“所有成员” vs “建立连接的实例”）。\n\n### 学习建议\n1. **熟悉官方文档**：掌握 `dba.dropMetadataSchema()` 等关键命令的具体作用。\n2. **动手实践**：通过实验验证命令的实际效果，加深理解。\n3. **复习考试大纲**：重点关注高可用性技术（如 InnoDB Cluster 和组复制）相关的内容。"
+}

@@ -1,0 +1,56 @@
+name: Merge Questions
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  merge-questions:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Merge JSON files
+        id: merge-json
+        run: |
+          # 安装 jq 用于 JSON 处理
+          sudo apt-get install -y jq
+
+          # 进入 questions 目录
+          cd questions
+
+          # 获取所有 JSON 文件并按名称排序
+          json_files=$(ls *.json | sort)
+
+          # 初始化空数组
+          merged_json="[]"
+
+          # 遍历每个文件并合并
+          for file in $json_files; do
+            # 读取文件内容并合并到数组中
+            file_content=$(cat "$file" | jq -c '.')
+            merged_json=$(echo "$merged_json" | jq --argjson content "$file_content" '. += [$content]')
+          done
+
+          # 输出到 questions.json
+          echo "$merged_json" | jq '.' > ../questions.json
+
+          # 输出合并的文件数量
+          echo "count=$(echo "$merged_json" | jq 'length')" >> $GITHUB_OUTPUT
+
+      - name: Commit and push changes
+        run: |
+          # 设置 Git 配置
+          git config --global user.name "GitHub Actions"
+          git config --global user.email "actions@github.com"
+
+          # 检查是否有变化需要提交
+          if git diff --quiet; then
+            echo "No changes to commit."
+          else
+            git add questions.json
+            git commit -m "Auto-update merged questions.json"
+            git push
+          fi

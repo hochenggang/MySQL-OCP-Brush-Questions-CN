@@ -1,0 +1,12 @@
+{
+  "question": "必须检查所有已建立连接的 `sort_buffer_size` 会话变量的值。可以查询哪个 `performance_schema` 表？",
+  "selections": {
+    "A": "`variables_by_thread` 表，存储每个线程的会话变量信息。",
+    "B": "`global_variables` 表，存储全局变量信息。",
+    "C": "`session_variables` 表，存储当前会话的变量信息。",
+    "D": "`user_variables_by_thread` 表，存储用户定义的变量信息。"
+  },
+  "answers": ["A"],
+  "summary": "### 选项分析\n- **A. `variables_by_thread`**：正确。该表记录了每个线程的会话变量，包括 `sort_buffer_size`，因此可以通过此表获取所有已建立连接的相关值。\n- **B. `global_variables`**：错误。此表仅存储全局变量，而 `sort_buffer_size` 是会话变量，无法通过此表查询。\n- **C. `session_variables`**：错误。此表仅存储当前会话的变量信息，无法反映所有已建立连接的变量值。\n- **D. `user_variables_by_thread`**：错误。此表用于存储用户定义的变量（如通过 `SET @var = value` 设置的变量），与系统会话变量无关。\n\n### 考点总结\n本题考察对 MySQL `performance_schema` 中各表功能的理解，特别是区分全局变量、会话变量和用户定义变量的存储位置，以及如何通过 `variables_by_thread` 表监控线程级别的会话变量。",
+  "suggestion": "### 应试技巧\n1. **明确变量类型**：在遇到涉及变量的题目时，首先判断是全局变量、会话变量还是用户定义变量，避免混淆。\n2. **熟悉架构**：掌握 `performance_schema` 的核心表及其用途，例如 `variables_by_thread` 和 `global_variables` 的区别。\n3. **排除法**：快速排除明显无关的选项，例如 `user_variables_by_thread` 不可能存储系统变量。\n\n### 学习建议\n- **深入学习官方文档**：MySQL 官方文档详细描述了 `performance_schema` 各表的功能，建议反复阅读相关章节。\n- **实验验证**：通过实际操作 MySQL 数据库，查询 `performance_schema` 的各表内容，加深理解。\n- **模拟练习**：多做类似题目，强化对变量存储位置及查询方法的记忆和应用能力。"
+}

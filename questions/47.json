@@ -1,0 +1,12 @@
+{
+  "question": "查看命令：`shell> mysqldump --no-create-info --all-databases --result-file=dump.sql` 下列哪项描述是正确的？",
+  "selections": {
+    "A": "它不会编写 `CREATE LOGFILE GROUP` 语句。",
+    "B": "它不会编写 `CREATE TABLESPACE` 语句。",
+    "C": "它不会编写 `CREATE DATABASE` 语句。",
+    "D": "它不会编写 `CREATE TABLE` 语句。"
+  },
+  "answers": ["D"],
+  "summary": "### 选项分析\n- **A. 它不会编写 `CREATE LOGFILE GROUP` 语句。**\n  - `CREATE LOGFILE GROUP` 是 InnoDB 表空间管理的一部分，与 `mysqldump` 的功能无关，因此该选项不正确。\n- **B. 它不会编写 `CREATE TABLESPACE` 语句。**\n  - 同理，`CREATE TABLESPACE` 涉及表空间管理，而 `mysqldump` 不会涉及表空间的创建，因此该选项也不正确。\n- **C. 它不会编写 `CREATE DATABASE` 语句。**\n  - 题目中未使用 `--no-create-db` 选项，因此 `CREATE DATABASE` 语句会被导出，该选项错误。\n- **D. 它不会编写 `CREATE TABLE` 语句。**\n  - `--no-create-info` 明确指示 `mysqldump` 不导出表的创建语句 (`CREATE TABLE`)，只导出表的数据，因此该选项正确。\n\n### 考点总结\n本题考查了 `mysqldump` 工具的核心功能及其选项的作用，特别是 `--no-create-info` 的具体行为，要求考生熟悉逻辑备份工具的基本用法。",
+  "suggestion": "### 应试技巧\n1. 熟悉 `mysqldump` 常用选项的功能，例如 `--no-create-info`、`--all-databases` 等。\n2. 注意排除与题目无关的干扰选项（如 A 和 B），避免被拼写或人为疏忽误导。\n3. 结合考试大纲中的“Backups and Recovery”部分，重点掌握逻辑备份和恢复的相关知识。\n\n### 学习建议\n1. 实践操作：通过实际运行 `mysqldump` 命令，观察不同选项的效果，加深理解。\n2. 查阅文档：参考 MySQL 官方文档，全面了解 `mysqldump` 的功能和选项。\n3. 总结归纳：整理常用备份工具及其选项的对比表，便于记忆和复习。"
+}

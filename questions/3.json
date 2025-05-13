@@ -1,0 +1,20 @@
+{
+  "question": "下列哪三项命令可以报告在 MySQL 服务器上运行的所有当前连接？（选择三项）",
+  "selections": {
+    "A": "SELECT * FROM performance_schema.threads",
+    "B": "SELECT * FROM information_schema.processlist",
+    "C": "SHOW EVENTS",
+    "D": "SELECT * FROM sys.statement_analysis",
+    "E": "SELECT * FROM sys.metrics",
+    "F": "SELECT * FROM performance_schema.events_transactions_current",
+    "G": "SELECT * FROM information_schema.events",
+    "H": "SHOW FULL PROCESSLIST"
+  },
+  "answers": [
+    "A",
+    "B",
+    "H"
+  ],
+  "summary": "#### 选项分析\n- **A. SELECT * FROM performance_schema.threads**：正确。performance_schema 是 MySQL 的性能监控数据库，其中的 threads 表记录了所有线程信息，包括当前客户端连接和后台线程。\n- **B. SELECT * FROM information_schema.processlist**：正确。该表提供了当前客户端连接的状态信息。\n- **C. SHOW EVENTS**：错误。该命令用于显示事件调度器中的事件定义。\n- **D. SELECT * FROM sys.statement_analysis**：错误。该视图用于分析 SQL 语句执行情况。\n- **E. SELECT * FROM sys.metrics**：错误。该视图展示的是系统性能指标。\n- **F. SELECT * FROM performance_schema.events_transactions_current**：错误。该表记录的是正在进行的事务信息。\n- **G. SELECT * FROM information_schema.events**：错误。该表用于查询事件定义。\n- **H. SHOW FULL PROCESSLIST**：正确。这是查看所有当前连接的常用命令。\n\n#### 考点总结\n本题考查考生对 MySQL 系统数据库和内置命令的理解能力。",
+  "suggestion": "#### 应试技巧\n熟悉各系统数据库的功能差异，掌握常用命令如 `SHOW FULL PROCESSLIST`。\n\n#### 学习建议\n实际操作练习，查阅官方文档，比较不同方法的优缺点。"
+}

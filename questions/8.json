@@ -1,0 +1,7 @@
+{
+"question":"使用 MySQL Enterprise Monitor (MEM) 的无代理安装方式监视 MySQL 服务器时，以下哪两项功能可用于此安装方法？",
+"selections":{"A":"磁盘使用情况和磁盘特征，包括磁盘顾问程序警告","B":"操作系统内存利用率","C":"CPU 占用率","D":"与安全有关的顾问程序警告","E":"MySQL 复制监视"},
+"answers":["D","E"],
+"summary":"本题考查 MySQL Enterprise Monitor 在无代理安装方式下的功能限制。无代理方式仅能通过 MySQL 数据库本身获取信息，无法访问操作系统级别的数据（如磁盘、内存、CPU 等）。因此 A、B、C 均不合理；而 D 项中与安全相关的顾问程序可通过数据库配置和日志获取信息，E 项中复制状态可通过 `performance_schema` 中的复制相关表进行监控，均为合理选项。",
+"suggestion":"应试时需重点理解 MySQL Enterprise Monitor 的不同部署方式（有代理 vs 无代理）及其支持的功能范围。建议结合考试大纲中【Monitoring and Maintenance】部分深入掌握 MEM 的使用场景及限制，并熟悉其与操作系统、数据库内核之间的交互机制。"
+}

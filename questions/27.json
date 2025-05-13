@@ -1,0 +1,15 @@
+{
+  "question": "`my.cnf` 文件包含以下设置：\n```ini\n[mysqld]\nlog_output=FILE\nslow_query_log\nlong_query_time=2.01\nlog_queries_not_using_indexes\n```\n您希望记录至少扫描 5000 条记录且运行时间超过 5 秒或未使用索引的查询。以下哪项包含添加到慢速日志或修改日志配置的所有设置？",
+  "selections": {
+    "A": "`long_query_time=5`  \n`min_examined_row_limit=5000`",
+    "B": "`min_examined_row_limit=5000`",
+    "C": "`long_query_time=5`",
+    "D": "`long_query_time=5`  \n`log_throttle_queries_not_using_indexes=5`",
+    "E": "`log_throttle_queries_not_using_indexes=5`  \n`min_examined_row_limit=5000`",
+    "F": "`long_query_time=5`  \n`log_throttle_queries_not_using_indexes=5`  \n`min_examined_row_limit=5000`",
+    "G": "`min_examined_row_limit=5000`"
+  },
+  "answers": ["A"],
+  "summary": "### 选项分析+考点总结\n- **题目解析**：  \n  根据需求，需满足三个条件：运行时间超过 5 秒、扫描行数达到 5000、未使用索引。其中 `log_queries_not_using_indexes` 已在原始配置中启用，无需重复设置。\n- **选项逐一分析**：  \n  - **A**：同时设置了 `long_query_time=5` 和 `min_examined_row_limit=5000`，完全符合要求。  \n  - **B** 和 **G**：仅包含 `min_examined_row_limit=5000`，缺少对运行时间的限制。  \n  - **C**：仅包含 `long_query_time=5`，缺少对扫描行数的限制。  \n  - **D** 和 **E**：引入了 `log_throttle_queries_not_using_indexes`，但此参数与题目无直接关联。  \n  - **F**：虽然包含了所有必要参数，但额外引入了不必要的配置。\n- **考点总结**：  \n  考察对 MySQL 慢查询日志相关参数的理解和应用能力，包括 `long_query_time`、`min_examined_row_limit` 和 `log_queries_not_using_indexes` 的功能及配置。",
+  "suggestion": "### 应试技巧+学习建议\n- **应试技巧**：  \n  1. 熟悉考试大纲中涉及的 MySQL 配置参数及其作用，如慢查询日志相关的参数。  \n  2. 注意题目中的细节描述，明确需求条件，避免因遗漏关键点而选择错误答案。  \n  3. 在多选项题目中，优先排除明显不符合要求的选项，再比较剩余选项的合理性。\n- **学习建议**：  \n  1. 深入理解 MySQL 日志机制，尤其是慢查询日志的工作原理及相关参数的作用。  \n  2. 实践配置 `my.cnf` 文件，观察不同参数对日志记录行为的影响。  \n  3. 结合官方文档复习常见配置参数，确保掌握其语法和应用场景。"
+}

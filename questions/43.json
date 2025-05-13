@@ -1,0 +1,13 @@
+{
+  "question": "以下哪两种方法允许 DBA 重置用户的密码？",
+  "selections": {
+    "A": "`mysqladmin` 客户端程序",
+    "B": "`GRANT` 语句",
+    "C": "`SET PASSWORD` 语句",
+    "D": "`mysql_secure_installation` 实用程序",
+    "E": "`ALTER USER` 语句"
+  },
+  "answers": ["C", "E"],
+  "summary": "### 选项分析\n- **A. `mysqladmin` 客户端程序**：主要用于管理 MySQL 服务器，例如启动、停止和检查状态等操作，无法直接用于重置用户密码。\n- **B. `GRANT` 语句**：主要用于授权用户权限，尽管可以结合 `IDENTIFIED BY` 子句设置密码，但其主要用途并非重置密码。\n- **C. `SET PASSWORD` 语句**：是 MySQL 中传统且专用的密码修改方式，语法如 `SET PASSWORD FOR 'username'@'host' = PASSWORD('new_password');`。\n- **D. `mysql_secure_installation` 实用程序**：主要用于初始安装后增强安全性（如 root 密码设置），但不适用于通用用户密码重置。\n- **E. `ALTER USER` 语句**：MySQL 5.7 及以上版本中推荐的方式，专门用于修改用户属性（包括密码），语法如 `ALTER USER 'username'@'host' IDENTIFIED BY 'new_password';`。\n\n### 考点总结\n本题考查 MySQL 中不同工具和语句在用户密码管理中的功能定位，重点在于区分专用密码重置工具与间接相关工具。",
+  "suggestion": "### 应试技巧\n1. **熟悉官方文档**：MySQL 官方文档对工具和语句的功能描述非常清晰，建议考生优先参考。\n2. **区分工具用途**：考试中常通过混淆工具功能来设置陷阱，需明确每个工具的主要用途。\n3. **关注版本差异**：例如 `ALTER USER` 是 MySQL 5.7 及以上版本的推荐方式，而 `SET PASSWORD` 更通用。\n\n### 学习建议\n1. **实践为主**：通过实际操作验证不同语句的效果，例如尝试使用 `SET PASSWORD` 和 `ALTER USER` 修改密码。\n2. **理解架构与安全模块**：根据考试大纲，用户管理属于“安全”模块的核心内容，建议系统学习该部分知识。\n3. **定期复习**：结合考试大纲中的“创建用户账户和角色”“控制用户权限”等内容，构建完整的知识体系。"
+}

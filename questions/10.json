@@ -1,0 +1,7 @@
+{
+"question":"使用 InnoDB 引擎，并且已经设置 innodb_file_per_table=ON。现从名为 FACTORY.INVENTORY 的大型表中删除了大量行。为了减少存储空间的浪费并提高 I/O 效率，需要对 INVENTORY 表的数据和索引进行物理存储的重新组织。以下哪项操作最符合该需求？",
+"selections":{"A":"CHECK TABLE FACTORY.INVENTORY","B":"mysqlcheck -u root -P 3306 FACTORY.INVENTORY","C":"mysqldump -u root -p FACTORY INVENTORY","D":"OPTIMIZE TABLE FACTORY.INVENTORY","E":"ANALYZE TABLE FACTORY.INVENTORY"},
+"answers":["D"],
+"summary":"`OPTIMIZE TABLE` 是唯一能重新组织 InnoDB 表数据和索引、释放未使用空间、提升 I/O 性能的操作。在删除大量数据后，该操作通过重建表结构实现空间回收与性能优化。其他选项如 CHECK、ANALYZE、mysqldump、mysqlcheck 均无法达到此效果。考点：MySQL 表维护与优化策略。",
+"suggestion":"掌握 MySQL 各类维护命令的功能差异是应对此类题目的关键。建议结合 `OPTIMIZE TABLE`、`ANALYZE TABLE`、`REPAIR TABLE` 等语句的实际应用场景进行记忆。同时熟悉 InnoDB 存储引擎的特性，特别是 `innodb_file_per_table` 对表空间管理的影响。"
+}

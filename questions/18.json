@@ -1,0 +1,14 @@
+{
+  "question": "以下是执行 `SELECT * FROM data_locks LIMIT 1\\G` 后的输出结果：\n\n```\nENGINE: INNODB\nENGINE LOCK ID: 1200:146\nENGINE TRANSACTIONID: 1200\nTHREAD ID: 45\nEVENT ID: 11\nOBJECT SCHEMA: mydb\nOBJECT NAME: mytable1\nPARTITION NAME: NULL\nSUBPARTITION NAME: NULL\nOBJECT INSTANCE BEGIN: 1187933372502 03\nLOCK_TYPE: RECORD\nLOCK_MODE: X\nLOCK_STATUS: GRANTED\nLOCK_DATA: 1922,1922\n```\n\n根据以上输出，判断以下哪两项描述是正确的？",
+  "selections": {
+    "A": "锁位于元数据对象级别。",
+    "B": "锁是行级锁（row-level lock）。",
+    "C": "锁是共享锁（shared lock）。",
+    "D": "锁是意向锁（intentional lock）。",
+    "E": "锁是独占锁（exclusive lock）。",
+    "F": "锁位于表对象级别。"
+  },
+  "answers": ["B", "E"],
+  "summary": "### 选项分析\n- **A. 锁位于元数据对象级别**：错误。输出中 `LOCK_TYPE: RECORD` 表明这是行级锁，与元数据对象无关。\n- **B. 锁是行级锁（row-level lock）**：正确。`LOCK_TYPE: RECORD` 明确表明这是一个行级锁。\n- **C. 锁是共享锁（shared lock）**：错误。`LOCK_MODE: X` 表明这是排他锁（exclusive lock），而非共享锁。\n- **D. 锁是意向锁（intentional lock）**：错误。意向锁通常用于表级锁，而这里的锁类型为 `RECORD`，与意向锁无关。\n- **E. 锁是独占锁（exclusive lock）**：正确。`LOCK_MODE: X` 表明这是一个排他锁。\n- **F. 锁位于表对象级别**：错误。`LOCK_TYPE: RECORD` 表明这是行级锁，而非表级锁。\n\n### 考点总结\n本题考查 MySQL 中 InnoDB 存储引擎的锁机制，重点涉及锁类型（如行级锁、表级锁）、锁模式（如排他锁、共享锁）以及锁定状态的理解。相关内容可参考考试大纲中的“架构”和“监控与维护”部分。",
+  "suggestion": "### 应试技巧\n1. **熟悉锁机制**：MySQL 的锁机制是 OCP 考试的重点内容之一，考生应熟练掌握 InnoDB 存储引擎的锁类型（如行级锁、表级锁）和锁模式（如排他锁、共享锁）。常见锁模式包括：\n   - **S 锁（共享锁）**：适用于只读操作，允许多个事务同时持有。\n   - **X 锁（排他锁）**：独占锁，阻止其他事务对同一资源进行读取或写入。\n   - **IS/IX 锁（意向锁）**：声明事务意图在表的某些行上获取更细粒度的锁。\n   - **GAP 锁**：锁定索引中的间隙，防止插入新数据。\n   - **Next-Key 锁**：结合记录锁和 GAP 锁，锁定索引记录及其前后的间隙。\n   常见锁类型包括：\n   - **RECORD 锁**：锁定具体的行记录。\n   - **TABLE 锁**：锁定整个表。\n   - **AUTO-INC 锁**：锁定自增列，确保分配唯一的自增值。\n\n2. **注意细节**：题目提供的输出信息通常包含关键线索（如 `LOCK_TYPE` 和 `LOCK_MODE`），务必逐项分析并排除干扰项。\n\n3. **理解术语**：掌握与锁相关的术语（如意向锁、元数据锁）及其应用场景。\n\n### 学习建议\n- **理论结合实践**：通过实际操作 MySQL 数据库，观察不同事务场景下的锁行为（如使用 `SHOW ENGINE INNODB STATUS` 或查询 `performance_schema.data_locks` 表）。\n- **复习考试大纲**：重点关注“架构”、“监控与维护”章节中关于存储引擎、锁机制和性能优化的内容。\n- **模拟试题练习**：多做类似题目，熟悉常见考点和出题风格，培养快速定位答案的能力。"
+}

@@ -1,0 +1,13 @@
+{
+  "question": "使用以下命令进行备份：```bash\nmysqldump --master-data=2 --single-transaction -result-file=dump.sql mydb\n```\n以下关于该命令的描述，哪些是正确的？",
+  "selections": {
+    "A": "它为所有存储引擎强制执行一致备份。",
+    "B": "创建的备份是一致的数据转储。",
+    "C": "它使用读取锁执行刷新表。",
+    "D": "它是冷备份。",
+    "E": "此选项使用 READ COMMITTED 事务处理隔离模式。"
+  },
+  "answers": ["B", "C"],
+  "summary": "### 选项分析\n- **A. 它为所有存储引擎强制执行一致备份。**\n  - 错误。`--single-transaction` 仅对支持事务的存储引擎（如 InnoDB）有效，无法保证非事务性存储引擎的一致性。\n- **B. 创建的备份是一致的数据转储。**\n  - 正确。`--single-transaction` 启动一个事务，在事务期间锁定表，确保备份数据的一致性。\n- **C. 它使用读取锁执行刷新表。**\n  - 部分正确。虽然未显式使用读取锁，但事务隐含了类似的效果。\n- **D. 它是冷备份。**\n  - 错误。`mysqldump` 是热备份工具，可在数据库运行时进行备份。\n- **E. 此选项使用 READ COMMITTED 事务处理隔离模式。**\n  - 错误。默认事务隔离级别为 `REPEATABLE READ`，不会自动切换到 `READ COMMITTED`。\n\n### 考点总结\n本题考查对 `mysqldump` 工具及其选项的理解，尤其是 `--single-transaction` 和 `--master-data` 的作用。\n- `--single-transaction` 确保了备份的一致性，但仅适用于事务型存储引擎。\n- `--master-data=2` 提供二进制日志位置信息，便于恢复和复制配置。",
+  "suggestion": "### 应试技巧\n1. **理解工具选项的作用**：熟悉 `mysqldump` 常用选项的功能及适用场景，例如 `--single-transaction`、`--master-data` 和 `--lock-tables`。\n2. **区分存储引擎差异**：注意不同存储引擎对备份一致性的影响，尤其是事务型与非事务型存储引擎的区别。\n3. **排除法解题**：优先排除明显错误的选项，再对剩余选项逐一验证。\n\n### 学习建议\n1. **掌握备份策略**：学习逻辑备份（如 `mysqldump`）和物理备份（如 `MySQL Enterprise Backup`）的特点及应用场景。\n2. **实践操作**：通过实际操作加深对备份工具的理解，例如尝试使用不同选项进行备份并观察效果。\n3. **阅读官方文档**：参考 MySQL 官方文档中关于 `mysqldump` 的详细说明，了解各选项的具体行为。"
+}

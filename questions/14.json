@@ -1,0 +1,15 @@
+{
+  "question": "用户希望在不输入用户名和密码的情况下进行 MySQL 连接。以下哪些位置可以存储用户的 MySQL 凭证以满足此需求？",
+  "selections": {
+    "A": "$HOME/mysqlrc",
+    "B": "$MYSQL_HOME/my.cnf",
+    "C": "DATADIR/mysqld-auto.cnf",
+    "D": "/etc/my.cnf",
+    "E": "$HOME/.mylogin.cnf",
+    "F": "$HOME/.mysql/auth/login",
+    "G": "$HOME/.my.cnf"
+  },
+  "answers": ["D", "E", "G"],
+  "summary": "### 选项分析\n- **A. `$HOME/mysqlrc`**：非标准 MySQL 配置文件路径，无法用于存储连接凭证，排除。\n- **B. `$MYSQL_HOME/my.cnf`**：主要用于服务器级配置，而非用户凭证存储，排除。\n- **C. `DATADIR/mysqld-auto.cnf`**：自动生成的动态配置文件，与用户凭证无关，排除。\n- **D. `/etc/my.cnf`**：系统级配置文件，虽然不推荐存储敏感信息，但可通过 `[client]` 部分实现自动连接，合理。\n- **E. `$HOME/.mylogin.cnf`**：MySQL 提供的加密凭证存储文件，支持通过 `mysql_config_editor` 管理，非常合理。\n- **F. `$HOME/.mysql/auth/login`**：非标准路径，与 MySQL 无关，排除。\n- **G. `$HOME/.my.cnf`**：用户级配置文件，常用于存储个人连接信息，非常合理。\n\n### 考点总结\n本题考查 MySQL 客户端连接机制及凭证存储方式的相关知识。重点在于理解 MySQL 配置文件的作用及其适用场景，尤其是 `$HOME/.mylogin.cnf` 和 `$HOME/.my.cnf` 的区别与用途。",
+  "suggestion": "### 应试技巧\n1. **熟悉官方文档**：MySQL 官方文档对配置文件路径及用途有详细说明，建议考生熟读相关章节。\n2. **理解优先于记忆**：掌握每种配置文件的设计初衷及适用场景，而非单纯记忆路径。\n3. **注意题目要求**：如本题允许“不合理的配置”，需结合实际场景灵活判断。\n\n### 学习建议\n- **实践验证**：通过实验验证不同配置文件的实际作用，例如尝试在 `/etc/my.cnf` 和 `$HOME/.my.cnf` 中配置 `[client]` 部分并观察效果。\n- **工具使用**：熟练掌握 `mysql_config_editor` 工具的使用方法，了解如何生成和管理 `.mylogin.cnf` 文件。\n- **扩展阅读**：参考《MySQL 8.0 Reference Manual》中关于客户端连接及安全配置的部分，加深对考点的理解。"
+}

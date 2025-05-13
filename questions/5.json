@@ -1,0 +1,14 @@
+{
+    "question": "可以使用哪个步骤或一组步骤来循环覆盖错误日志？",
+    "selections": {
+        "A": "执行 `SET GLOBAL expire_logs_days=0` 来强制日志滚动。",
+        "B": "执行 `SET GLOBAL log_error = '<new error log file>'`。",
+        "C": "执行 `x_error_count=<number of messages at point to rotate>`。",
+        "D": "重命名磁盘上的错误日志文件，然后执行 `FLUSH ERROR LOGS`。"
+    },
+    "answers": [
+        "D"
+    ],
+    "summary": "选项 A 中的 `expire_logs_days` 用于控制二进制日志的过期时间，并不适用于错误日志的轮换；选项 B 更改了错误日志的路径并生成新文件，但未实现覆盖行为；选项 C 中的 `x_error_count` 并非 MySQL 的有效变量，因此无效；选项 D 描述了 MySQL 中推荐的做法：手动重命名现有错误日志文件后执行 `FLUSH ERROR LOGS`，MySQL 将创建新的日志文件并从头开始记录，从而实现日志的“循环覆盖”。考点涉及 MySQL 日志管理机制及错误日志的刷新方法。",
+    "suggestion": "在备考过程中，应重点掌握 MySQL 各类日志（如错误日志、二进制日志、慢查询日志）的管理方式及其配置方法。理解 `FLUSH` 命令的作用和适用场景是关键。建议结合实际操作练习日志刷新与轮换流程，避免混淆不同日志类型的处理逻辑。同时注意区分 MySQL 原生日志机制与外部工具（如 logrotate）的功能差异。"
+}

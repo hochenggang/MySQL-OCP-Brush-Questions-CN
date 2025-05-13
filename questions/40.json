@@ -1,0 +1,13 @@
+{
+  "question": "### 关于在 host2 上部署的实例，下列哪项描述是正确的？\n\n```json\n\"topology\": {\n    \"host1:3377\": {\n        \"address\": \"host1:3377\",\n        \"mode\": \"R/W\",\n        [...]\n        \"status\": \"ONLINE\",\n        \"version\": \"8.0.18\"\n    },\n    \"host2:3377\": {\n        \"address\": \"host2:3377\",\n        \"mode\": \"R/O\",\n        [...]\n        \"status\": \"(MISSING)\"\n    },\n    \"host3:3377\": {\n        \"address\": \"host3:3377\",\n        \"mode\": \"R/O\",\n        [...]\n        \"status\": \"ONLINE\",\n        \"version\": \"8.0.18\"\n    }\n}\n```\n",
+  "selections": {
+    "A": "它可以使用命令 `cluster.addInstance('<user>@host3:3377')` 重新加入集群。",
+    "B": "它可以使用命令 `dba.rebootClusterFromCompleteOutage()` 重新加入集群。",
+    "C": "已使用 `STOP GROUP REPLICATION` 命令将其从群集中删除。",
+    "D": "由于事务错误，已将其逐出集群。",
+    "E": "可以通过克隆的方法从 host3 上的一个捐赠者实例 (donor instance) 来恢复该实例，使用的命令是 `cluster.rejoinInstance('<user>@host3:3377')`。"
+  },
+  "answers": ["E"],
+  "summary": "### 选项分析\n- **A**：`cluster.addInstance()` 是用于添加新实例到集群的命令，而非恢复缺失实例，故不正确。\n- **B**：`dba.rebootClusterFromCompleteOutage()` 适用于整个集群完全宕机的情况，而题目中仅一个实例缺失，故不适用。\n- **C**：`STOP GROUP REPLICATION` 不会直接将实例从集群中删除，且状态为 `(MISSING)` 的实例通常表示连接问题，故此选项错误。\n- **D**：没有提到事务错误的相关信息，因此这一选项缺乏依据。\n- **E**：`cluster.rejoinInstance()` 是专门用于恢复缺失实例的命令，可通过捐赠者实例（如 host3）克隆数据来完成恢复，符合题意。\n\n### 考点总结\n本题考查了 MySQL InnoDB 集群中的高可用性技术，特别是如何处理实例状态为 `(MISSING)` 的情况。涉及的知识点包括：\n- 集群拓扑结构的理解；\n- `cluster.rejoinInstance()` 的用途及使用场景；\n- 捐赠者实例的角色及其在恢复过程中的作用。",
+  "suggestion": "### 应试技巧\n- **熟悉命令功能**：MySQL 提供了多种管理命令，考生应明确其用途和适用场景，避免混淆。\n- **理解状态含义**：对于常见状态（如 ONLINE、MISSING 等），需了解其背后的技术原理及对应的解决方案。\n- **审题严谨**：注意题目中的关键词，例如“重新加入”、“恢复”、“删除”等，结合上下文选择最合适的答案。\n\n### 学习建议\n- **深入掌握文档**：参考 MySQL 官方文档，重点学习 InnoDB Cluster 和 Group Replication 的相关章节。\n- **动手实践**：通过搭建实验环境模拟实例丢失场景，练习使用 `cluster.rejoinInstance()` 等命令。\n- **强化理论基础**：复习考试大纲中“高可用性技术”部分的内容，确保对复制、集群配置与故障恢复有全面的理解。"
+}

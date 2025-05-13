@@ -1,0 +1,13 @@
+{
+  "question": "用户 `jsmith` 被授予如下权限：\n\n```sql\nGRANT USAGE ON *.* TO 'jsmith'@'%';\nGRANT UPDATE (name) ON world.country TO 'jsmith'@'%';\n```\n\n请问以下哪些 SQL 语句 `jsmith` 可以执行？",
+  "selections": {
+    "A": "UPDATE world.country SET name='all';",
+    "B": "UPDATE world.country SET name='new' WHERE name='old';",
+    "C": "UPDATE world.country SET name='one' LIMIT 1;",
+    "D": "UPDATE world.country SET name='first' ORDER BY name LIMIT 1;",
+    "E": "UPDATE world.country SET name=CONCAT('New', name);"
+  },
+  "answers": ["A", "C"],
+  "summary": "#### 选项分析\n\n- **A. `UPDATE world.country SET name='all';`**\n该语句仅修改授权列 `name`，且不涉及任何条件或列值读取，因此不需要 `SELECT` 权限。\n✅ 允许执行。\n\n- **B. `UPDATE world.country SET name='new' WHERE name='old';`**\n使用了 `WHERE` 子句，需读取 `name` 列的值来判断更新哪些行。MySQL 要求对相关列具有 `SELECT` 权限。\n❌ 用户未被授予 `SELECT` 权限，无法执行。\n\n- **C. `UPDATE world.country SET name='one' LIMIT 1;`**\n不包含 `WHERE` 条件，也不引用现有列值进行计算，因此不需要 `SELECT` 权限。\n✅ 允许执行。\n\n- **D. `UPDATE world.country SET name='first' ORDER BY name LIMIT 1;`**\n包含非法语法：MySQL 的 `UPDATE` 语句中不能直接使用 `ORDER BY`（除非配合 `JOIN`）。\n❌ 语法错误，无法执行。\n\n- **E. `UPDATE world.country SET name=CONCAT('New', name);`**\n更新过程中引用了 `name` 列的当前值进行拼接操作，这属于“读取列值”的行为，因此需要 `SELECT` 权限。\n❌ 用户没有 `SELECT` 权限，无法执行。\n\n#### 考点总结\n- MySQL 权限系统中存在隐性要求：即使执行的是 `UPDATE` 操作，只要涉及读取数据（如 `WHERE` 条件、表达式中引用列值），也需要具备相应的 `SELECT` 权限。\n- 对于列级权限（如 `UPDATE (col)`），应理解其实际应用范围和限制。\n- 应熟悉常见的 SQL 语法结构，避免因语法错误导致语句执行失败。",
+  "suggestion": "#### 应试技巧\n- 在考试中遇到与权限相关的题目时，务必明确用户所拥有的具体权限类型及对象级别。\n- 注意是否存在隐性权限需求，例如在 `UPDATE` 中使用 `WHERE` 或表达式引用列值时是否需要 `SELECT` 权限。\n- 留意 SQL 语句的语法合法性，尤其是那些非标准或容易混淆的写法。\n\n#### 学习建议\n- 精读 MySQL 官方文档中关于权限管理的部分，特别是有关 `GRANT` 和权限隐式依赖的内容。\n- 动手实验不同权限配置下的 SQL 执行情况，强化对权限边界和行为的理解。\n- 掌握常见 SQL 函数和表达式的使用场景及其对权限的影响。\n- 结合考试大纲中“Security”模块的要求，深入理解 MySQL 的安全机制和最佳实践。"
+}
