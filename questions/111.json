@@ -1,0 +1,12 @@
+{
+    "question": "Languages 表使用 InnoDB，而 countries 表使用 MyISAM 存储引擎。两个表都为空。分析以下语句：\n\nBEGIN;\n    INSERT INTO languages (lang) VALUES ('', 'Italian');\n    INSERT INTO countries (country) VALUES ('', 'Italy');\nROLLBACK;\n\n执行这些语句后，这两个表的内容是什么？",
+    "selections": {
+        "A": "两个表都是空的。",
+        "B": "两个表都有一行。",
+        "C": "languages 有一行，countries 什么都没有。",
+        "D": "countries 有一行，languages 什么都没有。"
+    },
+    "answers": ["D"],
+    "summary": "#### 选项分析\n- **A. 两个表都是空的。**\n  错误。虽然 `ROLLBACK` 会回滚事务中的操作，但 MyISAM 引擎不支持事务，因此 `countries` 表中的插入操作不会被回滚。\n\n- **B. 两个表都有一行。**\n  错误。InnoDB 支持事务，`languages` 表中的插入操作会被 `ROLLBACK` 回滚，而 MyISAM 不支持事务，`countries` 表中的插入操作不会被回滚。\n\n- **C. languages 有一行，countries 什么都没有。**\n  错误。`languages` 表使用 InnoDB，其插入操作会被 `ROLLBACK` 回滚，因此该表仍然为空。\n\n- **D. countries 有一行，languages 什么都没有。**\n  正确。InnoDB 支持事务，`languages` 表中的插入操作会被 `ROLLBACK` 回滚；MyISAM 不支持事务，`countries` 表中的插入操作不会被回滚。\n\n#### 考点总结\n1. **存储引擎特性**：\n   - InnoDB 支持事务，所有操作会在事务提交时生效，否则会被回滚。\n   - MyISAM 不支持事务，所有操作一旦执行成功，即使有 `ROLLBACK`，也不会被回滚。\n2. **事务管理**：理解 `BEGIN`、`COMMIT` 和 `ROLLBACK` 的作用，以及它们对不同存储引擎的影响。\n3. **数据一致性**：掌握不同存储引擎在事务处理上的差异，特别是在回滚操作中的表现。",
+    "suggestion": "#### 应试技巧\n1. **熟悉存储引擎特性**：考试中常考察 InnoDB 和 MyISAM 的区别，尤其是事务支持和数据一致性方面的内容。建议重点复习这两种存储引擎的核心特性。\n2. **理解事务关键字**：掌握 `BEGIN`、`COMMIT` 和 `ROLLBACK` 的作用，以及它们如何影响不同存储引擎的行为。\n3. **模拟场景练习**：通过编写类似的 SQL 语句并实际运行，加深对事务和存储引擎行为的理解。\n4. **关注细节**：题目中提到的表结构、存储引擎类型等细节往往是解题的关键，务必仔细阅读题干。\n\n#### 学习建议\n1. **深入学习存储引擎**：参考 MySQL 官方文档，详细了解 InnoDB 和 MyISAM 的工作原理，特别是事务处理机制。\n2. **实践操作**：在本地环境中创建测试表，分别使用 InnoDB 和 MyISAM 存储引擎，尝试执行类似题目的 SQL 语句，观察结果。\n3. **复习考试大纲**：根据考试大纲中的“Architecture”部分，重点复习存储引擎的工作方式和事务管理的相关知识点。\n4. **多做练习题**：通过练习类似题目，巩固对存储引擎特性和事务管理的理解，提高解题速度和准确性。"
+}

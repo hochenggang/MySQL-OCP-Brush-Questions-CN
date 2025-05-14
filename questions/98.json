@@ -1,0 +1,15 @@
+{
+    "question": "关于 `mysql_config_editor` 程序，哪两项描述是正确的？",
+    "selections": {
+        "A": "管理客户端程序的配置。",
+        "B": "它管理 MySQL 防火墙功能的配置。",
+        "C": "它可以将 datadir 移动到新位置。",
+        "D": "管理用于访问服务器的用户权限配置。",
+        "E": "除非提供 `--login-path`，否则默认情况下将使用 `[client]` 选项。",
+        "F": "它可用于创建和编辑 SSL 证书和日志位置。",
+        "G": "它提供用于更改 `my.cnf` 文件的接口。"
+    },
+    "answers": ["A", "E"],
+    "summary": "#### 选项分析\n- **A. 管理客户端程序的配置。**\n  正确。`mysql_config_editor` 是一个用于管理 MySQL 客户端配置的工具，允许用户存储和检索连接参数（如用户名、密码、主机等），从而简化客户端程序的配置。\n\n- **B. 它管理 MySQL 防火墙功能的配置。**\n  错误。MySQL 防火墙功能由 `MySQL Enterprise Firewall` 管理，与 `mysql_config_editor` 无关。\n\n- **C. 它可以将 datadir 移动到新位置。**\n  错误。`datadir` 的移动需要通过修改 `my.cnf` 文件并重启 MySQL 服务来实现，与 `mysql_config_editor` 无关。\n\n- **D. 管理用于访问服务器的用户权限配置。**\n  错误。用户权限配置通常通过 SQL 语句（如 `GRANT` 和 `REVOKE`）进行管理，而不是通过 `mysql_config_editor`。\n\n- **E. 除非提供 `--login-path`，否则默认情况下将使用 `[client]` 选项。**\n  正确。`mysql_config_editor` 默认使用 `[client]` 选项存储连接信息，但可以通过 `--login-path` 指定其他路径。\n\n- **F. 它可用于创建和编辑 SSL 证书和日志位置。**\n  错误。`mysql_config_editor` 不涉及 SSL 证书或日志位置的管理。\n\n- **G. 它提供用于更改 `my.cnf` 文件的接口。**\n  错误。`mysql_config_editor` 不直接操作 `my.cnf` 文件，而是管理客户端连接配置。\n\n#### 考点总结\n本题考查了 `mysql_config_editor` 的功能和用途，重点在于其管理客户端配置的能力，以及如何通过 `--login-path` 参数指定不同的配置路径。考生需要区分 `mysql_config_editor` 与其他 MySQL 工具的功能边界，例如防火墙配置、用户权限管理和文件系统操作等。",
+    "suggestion": "#### 应试技巧\n1. **理解工具的功能边界**：明确 `mysql_config_editor` 的作用是管理客户端连接配置，而非服务器配置或其他高级功能。\n2. **关注细节**：题目中提到的 `--login-path` 和 `[client]` 选项是关键考点，需熟练掌握其用法。\n3. **排除法**：对于不熟悉的选项，可以通过排除已知错误的选项来提高正确率。\n\n#### 学习建议\n1. **深入学习 `mysql_config_editor`**：掌握其基本命令和参数，尤其是 `--login-path` 和 `[client]` 的使用场景。\n2. **熟悉 MySQL 工具生态**：了解 MySQL 提供的各种工具及其功能，避免混淆不同工具的作用。\n3. **实践操作**：通过实际操作 `mysql_config_editor`，加深对其功能的理解，并熟悉常见用例。\n4. **复习考试大纲**：根据考试大纲中的“Server Installation and Configuration”部分，巩固对 MySQL 安装、配置及相关工具的掌握。"
+}

@@ -1,0 +1,13 @@
+{
+    "question": "分析下面的语句和响应结果：\n```sql\nmysql> SET GLOBAL join_buffer_size=1024*1024;\nQuery OK, 0 rows affected (0.00 sec)\n```\n下列哪两项是正确的？",
+    "selections": {
+        "A": "所有连接都会使用新的 `join_buffer_size` 值。",
+        "B": "在 MySQL Server 重新启动后，所有连接都会使用新的 `join_buffer_size` 值。",
+        "C": "仅当前连接会使用新的 `join_buffer_size` 值。",
+        "D": "只有新连接才会使用新的 `join_buffer_size` 值。",
+        "E": "在 MySQL Server 重新启动后，所有连接都会使用原始的 `join_buffer_size` 值。"
+    },
+    "answers": ["A", "E"],
+    "summary": "### 选项分析\n- **A. 所有连接都会使用新的 `join_buffer_size` 值。**  \n  正确。`SET GLOBAL` 修改的是全局变量，其更改会立即生效，并影响所有现有连接和新连接。\n\n- **B. 在 MySQL Server 重新启动后，所有连接都会使用新的 `join_buffer_size` 值。**  \n  错误。如果未将更改持久化到配置文件（如 `my.cnf`），重启后会恢复为默认值或原始值。\n\n- **C. 仅当前连接会使用新的 `join_buffer_size` 值。**  \n  错误。`GLOBAL` 设置会影响所有连接，而不仅仅是当前连接。\n\n- **D. 只有新连接才会使用新的 `join_buffer_size` 值。**  \n  错误。全局变量的更改会影响所有现有连接和新连接。\n\n- **E. 在 MySQL Server 重新启动后，所有连接都会使用原始的 `join_buffer_size` 值。**  \n  正确。如果未将 `join_buffer_size` 的更改写入配置文件，则重启后会恢复为原始值。\n\n### 考点总结\n本题考查了 MySQL 中全局变量的作用范围与持久性，重点包括：\n1. **全局变量的作用范围**：`SET GLOBAL` 影响所有现有连接和新连接。\n2. **全局变量的持久性**：未持久化的全局变量更改在 MySQL Server 重启后会失效，恢复为默认值或原始值。\n3. **考试大纲相关知识点**：根据考试大纲中的“Configure MySQL variables”部分，掌握如何通过命令行或配置文件设置和管理全局变量。",
+    "suggestion": "### 应试技巧\n1. **区分全局与会话变量**：理解 `SET GLOBAL` 和 `SET SESSION` 的区别，明确其作用范围。\n2. **关注持久化机制**：牢记未写入配置文件的全局变量更改在 MySQL Server 重启后会失效。\n3. **结合上下文分析题目**：注意题目是否隐含了持久化或重启的假设条件，避免误解。\n\n### 学习建议\n1. **复习全局变量相关知识点**：重点学习全局变量的作用范围、持久化机制及其与配置文件的关系。\n2. **熟悉 MySQL 配置文件**：了解如何通过 `my.cnf` 或 `my.ini` 文件持久化全局变量。\n3. **实验验证**：在实验环境中测试 `SET GLOBAL` 的效果，观察现有连接、新连接及重启后的行为。\n4. **参考官方文档**：查阅 MySQL 官方文档中关于变量管理和持久化的章节，确保对全局变量的特性有全面的理解。"
+}

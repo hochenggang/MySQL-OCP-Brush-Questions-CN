@@ -1,0 +1,16 @@
+{
+    "question": "以下哪三项是 MySQL Enterprise Monitor 的功能？",
+    "selections": {
+        "A": "创建定制预警并提供通知预警",
+        "B": "分析查询性能",
+        "C": "集中管理用户",
+        "D": "确定受监视的 MySQL 服务器的可用性",
+        "E": "启动 MySQL Enterprise 备份",
+        "F": "集中管理服务器配置",
+        "G": "启动和停止 MySQL Server",
+        "H": "启动逻辑备份"
+    },
+    "answers": ["A", "B", "D"],
+    "summary": "MySQL Enterprise Monitor 是一个用于监控 MySQL 数据库活动和性能的工具，其核心功能包括：\n- **创建定制预警并提供通知预警**（选项 A）：允许管理员设置自定义阈值，当数据库活动超出阈值时触发预警。\n- **分析查询性能**（选项 B）：通过详细分析查询执行计划，帮助优化慢查询，提升数据库性能。\n- **确定受监视的 MySQL 服务器的可用性**（选项 D）：实时监控服务器状态，确保数据库服务的高可用性。\n\n而选项 C、E、F、G 和 H 并非 MySQL Enterprise Monitor 的核心功能，其中：\n- 选项 C（集中管理用户）属于安全模块的功能。\n- 选项 E（启动 MySQL Enterprise 备份）属于备份与恢复模块的功能。\n- 选项 F（集中管理服务器配置）属于配置管理模块的功能。\n- 选项 G（启动和停止 MySQL Server）属于基础运维操作，而非监控工具的功能。\n- 选项 H（启动逻辑备份）属于备份策略的一部分，与监控无关。\n\n因此，正确答案为 A、B、D。",
+    "suggestion": "在备考 OCP 考试时，需重点掌握 MySQL Enterprise Monitor 的核心功能，尤其是其在预警、查询性能分析和服务器可用性监控方面的应用。建议结合考试大纲中的 'Monitoring and Maintenance' 部分进行复习，理解 MySQL Enterprise Monitor 的作用及其与其他模块（如安全、备份等）的区别。此外，可以通过实际操作 MySQL Enterprise Monitor 工具，加深对各功能的理解，提高应试能力。"
+}

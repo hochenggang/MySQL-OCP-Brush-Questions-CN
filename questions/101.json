@@ -1,0 +1,13 @@
+{
+    "question": "在 Oracle Linux 7 上安装 MySQL 8.0 后，使用 `mysqld --initialize` 命令初始化数据目录。哪两项可以帮助查找 root 用户密码？",
+    "selections": {
+        "A": "以 root 身份，使用 SHA-256 密码加密插件执行 SHOW PASSWORD 命令",
+        "B": "通过 warning 消息在屏幕上显示的 root 密码",
+        "C": "在由 --log-error=[file_name] 变量设置的错误日志中写入的 root 密码",
+        "D": "写入 /root/.my.cnf 文件的 root 用户密码",
+        "E": "存储在 mysql.install 表中的 root_pw 变量"
+    },
+    "answers": ["B", "C"],
+    "summary": "#### 选项分析\n- **A**: 错误。`SHOW PASSWORD` 命令并不存在，且即使存在，也无法直接显示 root 密码。\n- **B**: 正确。在 MySQL 8.0 中，`mysqld --initialize` 初始化时会通过 warning 消息在屏幕上显示临时生成的 root 密码。\n- **C**: 正确。初始化过程中，root 密码会被记录在由 `--log-error` 参数指定的错误日志文件中。\n- **D**: 错误。`/root/.my.cnf` 文件通常用于存储连接参数（如用户名和密码），但不会自动写入 root 密码。\n- **E**: 错误。MySQL 并没有 `mysql.install` 表，也不存在 `root_pw` 变量。\n\n#### 考点总结\n此题考察的是 MySQL 8.0 初始化时 root 密码的生成与存储机制，特别是如何通过屏幕警告消息和错误日志文件获取临时生成的 root 密码。",
+    "suggestion": "#### 应试技巧\n1. **熟悉初始化命令行为**：了解 `mysqld --initialize` 的工作原理，特别是它如何生成和显示临时 root 密码。\n2. **关注日志文件**：记住错误日志文件的作用，以及如何通过 `--log-error` 参数指定其位置。\n3. **排除法**：对于不熟悉的选项（如 `SHOW PASSWORD` 或虚构的表/变量），优先排除。\n\n#### 学习建议\n1. **复习初始化过程**：深入学习 MySQL 数据库的初始化流程，特别是临时 root 密码的生成方式。\n2. **实践操作**：在实验环境中亲自执行 `mysqld --initialize` 命令，观察屏幕输出和日志文件内容。\n3. **查阅官方文档**：参考 MySQL 官方文档关于初始化和安全配置的部分，确保对相关细节有全面理解。"
+}

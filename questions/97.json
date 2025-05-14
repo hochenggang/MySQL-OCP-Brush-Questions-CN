@@ -1,0 +1,13 @@
+{
+    "question": "哪两项是 MySQL Enterprise 防火墙的功能？",
+    "selections": {
+        "A": "使用替代动态修改 SQL 语句",
+        "B": "通过配置预先批准的白名单来阻止潜在威胁",
+        "C": "提供对 TCP/3306 的无状态防火墙访问",
+        "D": "自动锁定损坏防火墙的用户账户",
+        "E": "记录传入的 SQL 语句，以方便创建允许命令的白名单"
+    },
+    "answers": ["B", "E"],
+    "summary": "### 选项分析\n- **A. 使用替代动态修改 SQL 语句**\n  - 错误。MySQL Enterprise Firewall 的主要功能是过滤和阻止不符合规则的 SQL 请求，而不是动态修改 SQL 语句。\n- **B. 通过配置预先批准的白名单来阻止潜在威胁**\n  - 正确。MySQL Enterprise Firewall 允许管理员配置白名单，仅允许符合特定规则的 SQL 请求通过，从而有效阻止潜在威胁。\n- **C. 提供对 TCP/3306 的无状态防火墙访问**\n  - 错误。MySQL Enterprise Firewall 是一种应用层防火墙，专注于 SQL 层面的安全性，而非网络层面的无状态防火墙功能。\n- **D. 自动锁定损坏防火墙的用户账户**\n  - 错误。MySQL Enterprise Firewall 不具备自动锁定用户账户的功能，其主要职责是过滤 SQL 请求。\n- **E. 记录传入的 SQL 语句，以方便创建允许命令的白名单**\n  - 正确。MySQL Enterprise Firewall 可以记录传入的 SQL 请求，帮助管理员分析并创建更精确的白名单规则。\n\n### 考点总结\n本题考查的是 MySQL Enterprise Firewall 的核心功能，包括通过白名单机制阻止潜在威胁以及记录 SQL 请求以便优化安全策略。考生需要理解 MySQL Enterprise Firewall 的工作原理及其在数据库安全中的作用。",
+    "suggestion": "### 应试技巧\n1. **理解核心功能**：MySQL Enterprise Firewall 的主要功能是基于白名单的 SQL 过滤，而非动态修改或网络层面的防护。明确这一点有助于排除干扰项。\n2. **关注细节**：题目中提到的“预先批准的白名单”和“记录 SQL 语句”都是 MySQL Enterprise Firewall 的典型功能，应重点关注这些关键词。\n3. **排除法**：对于不熟悉的功能（如动态修改 SQL 或自动锁定账户），可以优先排除相关选项。\n\n### 学习建议\n1. **深入学习 MySQL 安全模块**：除了 MySQL Enterprise Firewall，还需了解其他安全组件，如审计日志、加密等，全面掌握 MySQL 的安全架构。\n2. **实践操作**：通过实际配置 MySQL Enterprise Firewall，加深对白名单机制和 SQL 过滤的理解。\n3. **复习考试大纲**：确保熟悉考试大纲中与安全相关的所有考点，特别是 MySQL Enterprise Firewall 的功能和应用场景。"
+}

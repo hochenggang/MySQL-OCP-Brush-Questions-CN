@@ -1,0 +1,14 @@
+{
+    "question": "异步复制设置正在运行的 MySQL 8.0。下列哪两个步骤是实施 GTID 复制的一部分？",
+    "selections": {
+        "A": "在从属服务器上执行此操作以启用 GTID：RESET SLAVE; START SLAVE GTID_NEXT=AUTOMATIC;",
+        "B": "在启用以下选项的情况下重新启动 MySQL（主服务器和从属服务器）\n--gtid_mode=ON\n--log-bin\n--log-slave-updates\n--enforce-gtid-consistency",
+        "C": "在从属服务器上，使用以下命令更改 MySQL 主连接设置：CHANGE MASTER TO MASTER_AUTO_POSITION = 1;",
+        "D": "在从属服务器上执行此操作以启用 GTID：START SLAVE IO_THREAD WITH GTID;",
+        "E": "通过在主服务器和从属服务器上执行此操作来启用 GTID：SET GLOBAL GTID_ENABLED=on;",
+        "F": "在从属服务器上，使用以下命令更改 MySQL 主连接设置。"
+    },
+    "answers": ["B", "C"],
+    "summary": "### 选项分析\n- **A**: 此选项描述的是传统的基于位置的复制方式，与 GTID 复制无关，因此不正确。\n- **B**: 启用 GTID 复制需要在主服务器和从属服务器上配置相应的启动选项，包括 `--gtid_mode=ON`、`--log-bin`、`--log-slave-updates` 和 `--enforce-gtid-consistency`，这是正确的步骤之一。\n- **C**: 在从属服务器上使用 `CHANGE MASTER TO MASTER_AUTO_POSITION = 1;` 是启用 GTID 复制的必要步骤，因为这会自动处理 GTID 的位置信息，而不是依赖传统的日志文件和位置。\n- **D**: `START SLAVE IO_THREAD WITH GTID;` 并不是一个有效的 SQL 语句，语法错误，因此不正确。\n- **E**: `SET GLOBAL GTID_ENABLED=on;` 不是一个合法的 MySQL 命令，GTID 的启用是通过启动选项完成的，而非动态设置变量。\n- **F**: 选项内容不完整，无法判断其正确性。\n\n### 考点总结\n本题考查 GTID 复制的实施步骤，重点在于理解如何通过启动选项和 SQL 命令启用 GTID 复制。GTID 复制的核心是确保每个事务都有一个全局唯一的标识符，从而简化复制配置和故障恢复过程。考生需要掌握 GTID 复制的配置方法，包括启动选项的设置和从属服务器的连接配置。",
+    "suggestion": "### 应试技巧\n1. **熟悉 GTID 复制的配置细节**：GTID 复制的启用依赖于特定的启动选项和 SQL 命令，考生应熟练掌握这些配置项及其作用。\n2. **注意语法准确性**：在选择选项时，务必检查 SQL 语句或命令的语法是否正确，避免因语法错误而误选。\n3. **区分传统复制与 GTID 复制**：了解两者的区别，特别是 GTID 复制的优势（如简化故障恢复和多源复制支持），有助于快速排除错误选项。\n\n### 学习建议\n1. **复习 GTID 相关文档**：深入学习 MySQL 官方文档中关于 GTID 复制的部分，理解其工作机制和配置方法。\n2. **实践操作**：在实验环境中实际配置 GTID 复制，通过动手操作加深对知识点的理解。\n3. **关注启动选项**：牢记 GTID 复制所需的启动选项，如 `--gtid_mode=ON`、`--log-bin` 等，这些是实施 GTID 复制的关键。\n4. **模拟考试**：多做类似的题目，尤其是涉及 SQL 命令和配置选项的题目，提高解题速度和准确率。"
+}

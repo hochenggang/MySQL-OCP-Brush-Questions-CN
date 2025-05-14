@@ -1,0 +1,13 @@
+{
+    "question": "下列哪两种是 InnoDB 表空间的类型？",
+    "selections": {
+        "A": "加密表空间 (:encryption_tablespaces)",
+        "B": "还原表空间 (undo tablespaces)",
+        "C": "重做表空间 (redo tablespaces)",
+        "D": "临时表空间 (temporary tablespaces)",
+        "E": "模式表空间 (schema tablespaces)"
+    },
+    "answers": ["B", "D"],
+    "summary": "### 选项分析\n- **A. 加密表空间 (:encryption_tablespaces)**：InnoDB 支持加密表空间，但题目中未明确提及这是标准的表空间类型，因此不选。\n- **B. 还原表空间 (undo tablespaces)**：InnoDB 使用还原表空间来存储事务的回滚日志（Undo Log），这是 InnoDB 的核心组成部分之一，属于标准表空间类型，应选。\n- **C. 重做表空间 (redo tablespaces)**：InnoDB 使用重做日志（Redo Log）来保证数据一致性，但重做日志通常存储在独立的文件中，而不是以表空间的形式存在，因此不选。\n- **D. 临时表空间 (temporary tablespaces)**：InnoDB 提供了专用的临时表空间用于存储临时表和排序操作的数据，这是标准的表空间类型，应选。\n- **E. 模式表空间 (schema tablespaces)**：InnoDB 并没有专门的“模式表空间”这一概念，因此不选。\n\n### 考点总结\n本题考查的是 InnoDB 表空间的基本分类。InnoDB 的表空间主要包括以下几种：\n1. **常规表空间**：用于存储用户定义的表和索引。\n2. **系统表空间**：存储 InnoDB 的内部元数据。\n3. **还原表空间 (undo tablespaces)**：存储 Undo Log，用于事务回滚。\n4. **临时表空间 (temporary tablespaces)**：存储临时表和排序操作的数据。\n5. **加密表空间**：支持数据加密功能，但不是标准的表空间类型。\n\n考生需要熟悉 InnoDB 的表空间结构及其用途。",
+    "suggestion": "### 应试技巧\n1. **理解核心概念**：InnoDB 的表空间是其存储引擎的核心组成部分，掌握其分类和用途是关键。建议重点复习 InnoDB 的存储架构，尤其是表空间的类型及其作用。\n2. **排除法**：对于不确定的选项，可以先排除明显错误或不符合常识的选项，逐步缩小范围。\n3. **关注细节**：InnoDB 的某些特性（如加密表空间）虽然重要，但并非标准的表空间类型，需仔细区分。\n\n### 学习建议\n1. **深入学习 InnoDB 架构**：参考 MySQL 官方文档或相关书籍，详细了解 InnoDB 的存储引擎设计，特别是表空间的分类和功能。\n2. **实践操作**：通过实际操作创建和管理 InnoDB 表空间，加深理解。\n3. **复习考试大纲**：根据考试大纲中的“Architecture”部分，重点复习与 InnoDB 存储相关的知识点，确保对表空间、缓冲区、缓存等有全面掌握。\n4. **模拟练习**：多做类似的题目，熟悉考试风格和出题思路，提高答题效率。"
+}

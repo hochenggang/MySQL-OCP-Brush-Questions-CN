@@ -1,0 +1,15 @@
+{
+    "question": "MySQL 客户端以默认方式安装在 Linux 工作站上。已知用于连接到在远程主机 192.0.2.1:3306 上运行的 Microsoft Windows 的 MySQL 服务器，使用 admin 用户凭证。需要使用 `--user=admin` 直接连接到 world 数据库。要使用单个命令完成此任务，必须指定哪三个选项？",
+    "selections": {
+        "A": "--shared-memory-base-name=world",
+        "B": "--protocol=UDP",
+        "C": "--protocol=pipe",
+        "D": "--port=3306",
+        "E": "--host=192.0.2.1",
+        "F": "--password",
+        "G": "--database=world"
+    },
+    "answers": ["E", "F", "G"],
+    "summary": "本题考查的是 MySQL 客户端连接远程服务器时的参数配置。正确答案为 `--host=192.0.2.1`、`--password` 和 `--database=world`。选项分析如下：\n- **A**: `--shared-memory-base-name=world` 是 Windows 系统中共享内存命名的参数，与 Linux 环境无关，且题目未涉及共享内存连接。\n- **B**: `--protocol=UDP` 不是 MySQL 支持的协议类型，MySQL 使用 TCP/IP 协议，默认不支持 UDP。\n- **C**: `--protocol=pipe` 是命名管道协议，适用于本地连接，与远程连接无关。\n- **D**: `--port=3306` 是指定连接端口的参数，但题目未明确要求指定端口号（默认端口即为 3306），因此不是必要选项。\n- **E**: `--host=192.0.2.1` 是指定远程主机地址的参数，符合题目要求。\n- **F**: `--password` 是密码参数，题目中提到使用 admin 用户凭证，因此需要提供密码。\n- **G**: `--database=world` 是指定数据库名称的参数，符合题目要求。\n考点总结：MySQL 客户端连接远程服务器的参数配置，包括主机地址、用户密码和目标数据库。",
+    "suggestion": "应试技巧：\n1. 熟悉 MySQL 客户端连接参数的含义和用途，尤其是 `--host`、`--password` 和 `--database` 等常用参数。\n2. 注意题目中的隐含条件，如默认端口（3306）无需显式指定。\n3. 阅读题目时，明确需求（如远程连接、指定数据库等），排除无关选项。\n学习建议：\n1. 复习 MySQL 客户端连接的相关文档，掌握常用参数及其用法。\n2. 实践操作，通过命令行连接远程 MySQL 服务器，熟悉参数配置过程。\n3. 关注考试大纲中的“Architecture”部分，特别是“Configure client connections to the server”相关内容。"
+}

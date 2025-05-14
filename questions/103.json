@@ -1,0 +1,13 @@
+{
+    "question": "您有一个启用了 GTID 的 MySQL 实例，该实例每秒运行 100 多个事务。您发现某些数据已被删除。您决定从所有可用的二进制日志执行恢复。\n\n下列哪两个命令可以立即将数据库还原到删除数据之前的时间点？",
+    "selections": {
+        "A": "START SLAVE SQL_THREAD UNTIL SQL_BEFORE_GTIDS=……",
+        "B": "mysqlbinlog --skip-gtids ……",
+        "C": "mysqlbinlog --stop-position ……",
+        "D": "START SLAVE IO THREAD UNTIL SQL BEFORE_GTIDS=…",
+        "E": "mysqlbinlog --stop-datetime …"
+    },
+    "answers": ["A", "C"],
+    "summary": "#### 选项分析\n- **A. START SLAVE SQL_THREAD UNTIL SQL_BEFORE_GTIDS=……**\n  正确。在启用 GTID 的情况下，可以通过指定 `SQL_BEFORE_GTIDS` 来控制复制线程（SQL 线程）停止在某个 GTID 集合之前，从而实现数据的回滚和恢复。\n\n- **B. mysqlbinlog --skip-gtids ……**\n  错误。`--skip-gtids` 参数用于忽略 GTID 信息，通常用于非 GTID 模式的场景，与题意不符。\n\n- **C. mysqlbinlog --stop-position ……**\n  正确。通过 `--stop-position` 参数，可以指定二进制日志的偏移量，从而在特定位置停止解析日志，实现数据恢复。\n\n- **D. START SLAVE IO THREAD UNTIL SQL BEFORE_GTIDS=…**\n  错误。`IO THREAD` 是负责从主库拉取二进制日志的线程，而 `UNTIL SQL BEFORE_GTIDS` 应用于 SQL 线程，语法错误且不符合逻辑。\n\n- **E. mysqlbinlog --stop-datetime …**\n  错误。虽然 `--stop-datetime` 可以根据时间戳停止解析日志，但题干要求的是基于 GTID 的恢复，此选项不适用。\n\n#### 考点总结\n- **GTID 的使用**：理解 GTID 在 MySQL 复制中的作用，以及如何通过 `SQL_BEFORE_GTIDS` 实现数据回滚。\n- **二进制日志的解析**：掌握 `mysqlbinlog` 工具的常用参数，特别是 `--stop-position` 和 `--stop-datetime` 的区别。\n- **MySQL 复制线程**：了解 `SQL_THREAD` 和 `IO_THREAD` 的功能差异，以及如何通过 `UNTIL` 子句控制复制线程的行为。",
+    "suggestion": "#### 应试技巧\n1. **熟悉 GTID 的应用场景**：GTID 是 MySQL 高可用性和复制管理的核心机制之一，务必掌握其在数据恢复和复制控制中的用法。\n2. **区分不同工具和命令的功能**：`mysqlbinlog` 和 `START SLAVE` 是常用的恢复和管理工具，需明确它们的参数和适用场景。\n3. **关注细节**：题目中提到“启用了 GTID”，这直接影响了恢复策略的选择，务必仔细阅读题干。\n\n#### 学习建议\n1. **深入学习 GTID 的原理**：理解 GTID 如何保证事务的唯一性，并掌握如何通过 GTID 控制复制和恢复。\n2. **练习实际操作**：通过实验环境模拟数据删除和恢复的过程，熟悉 `mysqlbinlog` 和 `START SLAVE` 的具体用法。\n3. **复习备份与恢复策略**：结合考试大纲中的“Backups and Recovery”部分，系统学习 MySQL 的备份与恢复方法，包括逻辑备份、物理备份和基于 GTID 的恢复。\n4. **掌握常见工具的参数**：熟练记忆 `mysqlbinlog` 的常用参数（如 `--stop-position`、`--stop-datetime` 等），并理解其应用场景。"
+}

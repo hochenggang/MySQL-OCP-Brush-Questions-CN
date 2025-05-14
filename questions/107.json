@@ -1,0 +1,13 @@
+{
+    "question": "必须将 MySQL Server 的最大连接数增加到 200。更改应立即生效，并在服务器重新启动后保留值 200。执行哪条语句才能做到这一点？",
+    "selections": {
+        "A": "SET GLOBAL max_connections=200;",
+        "B": "SET PERSIST max_connections=200;",
+        "C": "SET PERSIST_ONLY max_connections=200;",
+        "D": "SET SESSION max_connections=200;",
+        "E": "SET GLOBAL PERSIST max_connections=200;"
+    },
+    "answers": ["B"],
+    "summary": "本题考查的是如何动态调整并持久化 MySQL 的 `max_connections` 参数。选项分析如下：\n- **A. SET GLOBAL max_connections=200;**：此命令可以立即生效，但不会持久化到配置文件中，重启后会恢复默认值。\n- **B. SET PERSIST max_connections=200;**：这是正确答案，该命令不仅立即生效，还会将更改持久化到配置文件中，重启后依然有效。\n- **C. SET PERSIST_ONLY max_connections=200;**：此命令仅用于持久化参数，不会立即生效，因此不符合题意。\n- **D. SET SESSION max_connections=200;**：此命令只能影响当前会话，无法全局生效，也不符合题意。\n- **E. SET GLOBAL PERSIST max_connections=200;**：语法错误，`GLOBAL` 和 `PERSIST` 不能同时使用。\n\n考点总结：MySQL 参数动态调整与持久化机制。",
+    "suggestion": "应试技巧：\n1. 熟悉 MySQL 参数的动态调整方式，区分 `GLOBAL`、`SESSION`、`PERSIST` 和 `PERSIST_ONLY` 的作用。\n2. 注意语法规范，避免拼写错误或语法混淆。\n3. 理解参数持久化的概念，知道哪些命令可以实现即时生效且重启后仍保留。\n\n学习建议：\n1. 查阅 MySQL 官方文档，详细了解 `SET` 命令的各种选项及其应用场景。\n2. 实践操作，通过实验验证不同命令的效果，加深理解。\n3. 复习考试大纲中的 'Configure MySQL by using options and option files' 部分，掌握参数配置的相关知识。"
+}

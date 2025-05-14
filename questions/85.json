@@ -1,0 +1,13 @@
+{
+    "question": "您正在使用 `mysqlcheck` 进行服务器维护。下列哪两项描述是正确的？",
+    "selections": {
+        "A": "`mysqlcheck --optimize --all-databases` 命令从表文件中回收可用空间。",
+        "B": "可以将 `mysqlcheck` 命令重命名为 `mysqlrepair`，这样它可以在默认情况下修复表。",
+        "C": "`mysqlcheck --repair --all-databases` 命令可以修复 InnoDB 损坏的表。",
+        "D": "`mysqlcheck --analyze --all-databases` 命令执行一系列检查以发现最终的表损坏。",
+        "E": "`mysqlcheck --check --all-databases` 命令在执行一系列检查时采用表写入锁定。"
+    },
+    "answers": ["A", "E"],
+    "summary": "### 选项分析\n- **A. `mysqlcheck --optimize --all-databases` 命令从表文件中回收可用空间。**\n  正确。`mysqlcheck --optimize` 会优化表，包括回收未使用的空间，适用于 MyISAM 表。\n\n- **B. 可以将 `mysqlcheck` 命令重命名为 `mysqlrepair`，这样它可以在默认情况下修复表。**\n  错误。`mysqlcheck` 和 `mysqlrepair` 是两个不同的工具，`mysqlrepair` 是一个独立的工具，专门用于修复表，而 `mysqlcheck` 的默认行为是检查表，而不是修复。\n\n- **C. `mysqlcheck --repair --all-databases` 命令可以修复 InnoDB 损坏的表。**\n  错误。`mysqlcheck` 的 `--repair` 选项不适用于 InnoDB 表，因为 InnoDB 自身有修复机制，`mysqlcheck` 无法直接修复 InnoDB 表。\n\n- **D. `mysqlcheck --analyze --all-databases` 命令执行一系列检查以发现最终的表损坏。**\n  错误。`mysqlcheck --analyze` 的主要功能是分析表的统计信息，而不是检查表损坏。\n\n- **E. `mysqlcheck --check --all-databases` 命令在执行一系列检查时采用表写入锁定。**\n  正确。`mysqlcheck --check` 会对表进行一致性检查，并且在检查过程中会对表进行锁定，以确保数据的一致性。\n\n### 考点总结\n- `mysqlcheck` 的常用选项及其功能：`--optimize`、`--repair`、`--analyze`、`--check`。\n- 不同存储引擎（如 MyISAM 和 InnoDB）对 `mysqlcheck` 的支持情况。\n- `mysqlcheck` 在执行检查或优化时的锁定机制。",
+    "suggestion": "### 应试技巧\n1. **理解 `mysqlcheck` 的功能和选项**：熟悉 `mysqlcheck` 的常用选项（如 `--optimize`、`--repair`、`--analyze`、`--check`）及其适用场景，特别是不同存储引擎（如 MyISAM 和 InnoDB）对这些选项的支持情况。\n2. **注意锁定机制**：了解 `mysqlcheck` 在执行检查或优化时的锁定行为，特别是在多用户环境中，锁定可能会对性能产生影响。\n3. **区分相关工具**：明确 `mysqlcheck` 和其他工具（如 `mysqlrepair`）的功能区别，避免混淆。\n\n### 学习建议\n1. **复习 `mysqlcheck` 的官方文档**：深入理解 `mysqlcheck` 的各个选项及其适用场景，特别是不同存储引擎的差异。\n2. **实践操作**：在测试环境中使用 `mysqlcheck` 的不同选项，观察其行为和效果，加深理解。\n3. **关注存储引擎特性**：熟悉 MyISAM 和 InnoDB 的特性，特别是它们对 `mysqlcheck` 的支持情况，这对于正确回答相关题目至关重要。\n4. **掌握锁定机制**：了解 MySQL 中的表锁定机制，特别是在执行检查或优化命令时的锁定行为，这对于理解题目的正确性非常重要。"
+}

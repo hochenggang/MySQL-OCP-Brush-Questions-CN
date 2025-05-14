@@ -1,0 +1,13 @@
+{
+    "question": "可以使用下列哪两种方法来确定查询是否使用散列联接算法？",
+    "selections": {
+        "A": "EXPLAIN 没有任何格式化参数",
+        "B": "EXPLAIN FORMAT=JSON",
+        "C": "EXPLAIN FORMAT=TREE",
+        "D": "EXPLAIN ANALYZE",
+        "E": "EXPLAIN FORMAT=TRADITIONAL"
+    },
+    "answers": ["B", "D"],
+    "summary": "### 选项分析\n- **A. EXPLAIN 没有任何格式化参数**：默认文本格式输出，无法直接显示联接算法。\n- **B. EXPLAIN FORMAT=JSON**：JSON 格式输出，详细展示执行计划，包括使用的联接算法，是首选答案。\n- **C. EXPLAIN FORMAT=TREE**：树状结构输出，有助于理解执行流程，但不直接显示联接算法。\n- **D. EXPLAIN ANALYZE**：实际执行查询并分析性能，通过执行细节可以间接推断出联接算法，是次选答案。\n- **E. EXPLAIN FORMAT=TRADITIONAL**：等同于选项 A，默认文本格式输出，无法直接显示联接算法。\n\n### 考点总结\n此题考察了 `EXPLAIN` 命令的不同输出格式及其应用场景，重点在于如何通过执行计划识别查询使用的联接算法。`EXPLAIN FORMAT=JSON` 是最直接的方法，而 `EXPLAIN ANALYZE` 则通过实际执行查询提供了补充信息。",
+    "suggestion": "### 应试技巧\n1. 熟悉 `EXPLAIN` 命令的不同格式及其用途，尤其是 `FORMAT=JSON` 和 `ANALYZE` 的区别。\n2. 记住 `EXPLAIN FORMAT=JSON` 是查看详细执行计划的最佳选择，而 `EXPLAIN ANALYZE` 则适用于需要实际执行查询的场景。\n3. 对比不同选项的功能差异，优先选择能够直接满足题意的答案。\n\n### 学习建议\n1. 深入学习 `EXPLAIN` 命令的各种格式，特别是 `FORMAT=JSON` 和 `ANALYZE` 的用法。\n2. 实践编写 SQL 查询并使用 `EXPLAIN` 分析其执行计划，理解不同联接算法（如散列联接、嵌套循环联接等）的应用场景。\n3. 参考 MySQL 官方文档或相关技术书籍，掌握查询优化的核心概念。"
+}

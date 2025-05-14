@@ -1,0 +1,14 @@
+{
+    "question": "您最近将 MySQL 升级到 MySQL 8.0。查看下列客户端错误：\n\n```\nERROR 2059 (HY000): Authentication plugin 'caching_sha2_password' cannot be loaded: /usr/local/mysql/lib/plugin/caching_sha2_password.so: cannot open object file: No such file or directory\n```\n以下哪个选项允许此客户端连接到 MySQL Server？",
+    "selections": {
+        "A": "[mysqld]\ndefault_authentication_plugin=caching_sha2_password",
+        "B": "[mysqld]\ndefault_authentication_plugin=mysql_native_password",
+        "C": "[mysqld]\ndefault_authentication_plugin=sha256_password",
+        "D": "ALTER USER user IDENTIFIED WITH sha256_password BY 'password';",
+        "E": "ALTER USER user IDENTIFIED WITH mysql_native_password BY 'password';",
+        "F": "ALTER USER user IDENTIFIED WITH caching_sha2_password BY 'password';"
+    },
+    "answers": ["E"],
+    "summary": "#### 选项分析\n- **A**: `[mysqld]\ndefault_authentication_plugin=caching_sha2_password` \n  错误原因：报错信息显示 `caching_sha2_password` 插件无法加载，因此不能使用此插件作为默认认证方式。\n\n- **B**: `[mysqld]\ndefault_authentication_plugin=mysql_native_password` \n  错误原因：虽然此选项可以解决问题，但它会修改全局默认认证插件，影响所有用户，而题目仅要求允许特定客户端连接，因此不符合需求。\n\n- **C**: `[mysqld]\ndefault_authentication_plugin=sha256_password` \n  错误原因：虽然 `sha256_password` 是一种安全的认证方式，但报错信息并未提及该插件，且配置语法正确性无误，但并非最佳解决方案。\n\n- **D**: `ALTER USER user IDENTIFIED WITH sha256_password BY 'password';` \n  错误原因：此命令仅更改指定用户的认证方式为 `sha256_password`，而未解决客户端因 `caching_sha2_password` 插件不可用导致的连接问题。\n\n- **E**: `ALTER USER user IDENTIFIED WITH mysql_native_password BY 'password';` \n  正确选项：此命令将指定用户的认证方式更改为 `mysql_native_password`，解决了客户端连接问题，符合题目要求。\n\n- **F**: `ALTER USER user IDENTIFIED WITH caching_sha2_password BY 'password';` \n  错误原因：报错信息明确指出 `caching_sha2_password` 插件无法加载，因此无法使用此插件。\n\n#### 考点总结\n1. **MySQL 认证插件**：理解 MySQL 8.0 中的默认认证插件 `caching_sha2_password` 和其他可选插件（如 `mysql_native_password`、`sha256_password`）的功能与区别。\n2. **错误排查**：根据报错信息定位问题根源，判断插件是否可用，并选择合适的解决方案。\n3. **用户级别调整 vs 全局调整**：掌握如何通过 SQL 命令在用户级别调整认证方式，而非全局修改配置。\n4. **兼容性**：了解不同认证插件的兼容性，特别是在升级 MySQL 版本时可能出现的问题。",
+    "suggestion": "#### 应试技巧\n1. **关注题目要求**：在遇到类似问题时，仔细阅读题目要求，区分是针对特定客户端还是全局配置的需求。\n2. **优先选择最小化影响的方案**：在不影响其他用户或系统的情况下，优先选择对特定用户或客户端进行调整的方案。\n3. **熟悉认证插件的切换方法**：掌握如何通过 SQL 命令（如 `ALTER USER`）和配置文件调整认证插件。\n4. **模拟练习**：通过实际操作模拟升级场景，熟悉不同认证插件的配置与切换过程，增强对考点的理解。\n\n#### 学习建议\n1. **深入学习认证插件**：掌握 MySQL 8.0 中新增的认证插件 `caching_sha2_password` 的功能与局限性，同时熟悉传统插件（如 `mysql_native_password`）的特点。\n2. **熟悉用户权限管理**：熟练掌握如何通过 SQL 命令管理用户权限和认证方式，特别是 `ALTER USER` 的用法。\n3. **实践操作**：通过实际安装、升级 MySQL 并进行认证插件的切换，加深对知识点的理解。\n4. **复习考试大纲**：对照考试大纲中的“Security”部分，确保全面掌握认证、权限管理等相关知识。"
+}

@@ -1,0 +1,13 @@
+{
+    "question": "分析下面的语句和输出：\n```sql\nmysql> EXPLAIN SELECT ID FROM world.city WHERE CountryCode = 'AUS';\n```\n| id | select_type | table | partitions | type | possible_keys | key | key_len | ref | rows | filtered | Extra |\n|----|-------------|-------|------------|------|---------------|-----|---------|-----|-------|----------|--------|\n| 1  | SIMPLE      | city  | NULL       | ref  | CountryCode   | CountryCode | 3     | const | 14    | 100.00  | Using index |\n\n哪两项描述是正确的？",
+    "selections": {
+        "A": "将读取三个索引记录。",
+        "B": "结果为单行。",
+        "C": "该计划包含对 `CountryCode` 索引的全索引扫描。",
+        "D": "只检查结果所需的记录。",
+        "E": "在没有读取完整数据行的情况下，会发现结果。"
+    },
+    "answers": ["D", "E"],
+    "summary": "### 选项分析\n- **A. 将读取三个索引记录。**\n  - 错误。`rows` 列显示为 14，表示将读取 14 条记录，而不是 3 条。\n\n- **B. 结果为单行。**\n  - 错误。`rows` 列显示为 14，表示结果可能有多行，而不是单行。\n\n- **C. 该计划包含对 `CountryCode` 索引的全索引扫描。**\n  - 错误。`type` 列为 `ref`，表示使用的是索引查找（非全索引扫描），而不是全索引扫描。\n\n- **D. 只检查结果所需的记录。**\n  - 正确。`type` 列为 `ref`，表示 MySQL 使用索引快速定位到符合条件的记录，只检查结果所需的记录。\n\n- **E. 在没有读取完整数据行的情况下，会发现结果。**\n  - 正确。`Extra` 列显示为 `Using index`，表示查询使用了覆盖索引（Covering Index），即所有查询列都在索引中，无需读取完整数据行。\n\n### 考点总结\n- **EXPLAIN 输出解析**：理解 `id`、`select_type`、`type`、`possible_keys`、`key`、`key_len`、`ref`、`rows`、`filtered` 和 `Extra` 各列的含义。\n- **索引类型**：区分 `ref`、`range`、`index` 和 `ALL` 等索引访问类型。\n- **覆盖索引**：当查询列都在索引中时，MySQL 可以直接从索引中获取数据，无需访问表数据行。\n- **`rows` 列**：表示查询预计扫描的行数，用于评估查询效率。\n- **`Extra` 列**：提供额外的执行信息，如 `Using index`、`Using where` 等。",
+    "suggestion": "### 应试技巧\n1. **熟悉 EXPLAIN 输出**：EXPLAIN 是优化查询性能的核心工具，务必熟练掌握各列的含义及其对查询执行计划的影响。\n2. **理解索引类型**：区分不同索引访问类型（如 `ref`、`range`、`index`、`ALL`）的性能差异。\n3. **识别覆盖索引**：当 `Extra` 列显示 `Using index` 时，说明查询使用了覆盖索引，这是优化查询性能的重要手段。\n4. **关注 `rows` 和 `filtered` 列**：这些列可以帮助评估查询的效率，是优化查询的重要依据。\n\n### 学习建议\n1. **实践 EXPLAIN**：在实际环境中运行 EXPLAIN，观察不同查询的执行计划，并尝试通过索引优化查询。\n2. **学习索引原理**：深入理解 B+ 树索引的工作原理，掌握如何创建和维护高效的索引。\n3. **研究覆盖索引**：了解覆盖索引的适用场景，并在实际项目中尝试应用。\n4. **参考官方文档**：阅读 MySQL 官方文档中关于 EXPLAIN 和索引优化的部分，掌握最新的优化技巧。\n5. **模拟考试**：多做类似的题目，熟悉考试风格和考点，提升解题速度和准确性。"
+}

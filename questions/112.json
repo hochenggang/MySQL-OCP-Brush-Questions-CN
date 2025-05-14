@@ -1,0 +1,14 @@
+{
+    "question": "安装时会启用相关的 MySQL Enterprise 插件。您必须阻止用户使用特定的密码列表。您如何在系统上实现这一点？",
+    "selections": {
+        "A": "使用 MySQL 防火墙黑名单注册无效的密码模式。",
+        "B": "将值存储在 mysql.user_invalid_passwords 表中。",
+        "C": "不能在 MySQL 中保存不可使用的空密码列表。",
+        "D": "设置 validate_password.dictionary_file=pass_dict.txt 并将不可使用的口令存储在数据目录的 pass_dict.txt 文件中。",
+        "E": "通过 MySQL Enterprise 审计 JSON 过滤器指定不可使用的口令。",
+        "F": "手动将值存储在文件中，并使用 SHA-256 检查 mysql.user 表。"
+    },
+    "answers": ["D"],
+    "summary": "### 选项分析\n- **A**: MySQL 防火墙主要用于网络层面的安全防护，而非直接管理密码策略，因此此选项不适用。\n- **B**: `mysql.user_invalid_passwords` 并非 MySQL 的内置表，此选项表述错误。\n- **C**: 此选项表述模糊且不符合实际操作，MySQL 可以通过配置插件来管理密码策略。\n- **D**: 正确答案。通过配置 `validate_password.dictionary_file` 参数并指定一个包含不可使用密码的文本文件（如 `pass_dict.txt`），可以有效阻止用户使用特定的密码列表。\n- **E**: MySQL Enterprise 审计功能主要用于记录和监控数据库活动，而非直接管理密码策略，因此此选项不适用。\n- **F**: 手动检查 `mysql.user` 表并使用 SHA-256 加密验证密码虽然可行，但效率低下且不符合最佳实践。\n\n### 考点总结\n本题考查的是 MySQL 密码安全策略的配置，特别是如何通过 `validate_password` 插件中的 `dictionary_file` 参数来阻止用户使用特定的密码列表。考生需要熟悉 MySQL 的密码验证插件及其相关参数的配置方法。",
+    "suggestion": "### 应试技巧\n1. **理解核心概念**：熟悉 MySQL 的密码验证插件（如 `validate_password`）及其参数的功能，尤其是 `dictionary_file` 的作用。\n2. **排除法**：对于不熟悉的选项或明显错误的选项（如不存在的表名或不合理的描述），优先排除。\n3. **关注细节**：注意选项中的具体参数名称和文件路径，确保与官方文档一致。\n\n### 学习建议\n1. **深入学习密码安全策略**：掌握 `validate_password` 插件的各个参数及其应用场景，尤其是如何通过字典文件阻止弱密码。\n2. **实践操作**：在实验环境中配置 `validate_password` 插件，并尝试使用不同的参数进行测试，加深理解。\n3. **查阅官方文档**：定期参考 MySQL 官方文档，了解最新的安全策略和最佳实践。\n4. **模拟考试**：多做类似的题目，熟悉考试风格和出题思路，提升解题速度和准确性。"
+}

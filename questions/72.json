@@ -1,0 +1,14 @@
+{
+    "question": "分析以下语句，该语句会被成功执行：\n```sql\nCREATE TABLE employees (\n    Emp_no int unsigned NOT NULL,\n    birth_date date NOT NULL,\n    first_name varchar(14) NOT NULL,\n    last_name varchar(16) NOT NULL,\n    hire_date date NOT NULL,\n    PRIMARY KEY (emp_no)\n) ENGINE=InnoDB;\n```\n现在，检查以下查询：\n```sql\nSELECT emp_no, first_name, last_name, birth_date FROM employees WHERE MONTH(birth_date) = 4;\n```\n必须添加一个索引来减少查询所处理的行数。下列哪两条语句可以完成此操作？",
+    "selections": {
+        "A": "ALTER TABLE employees ADD COLUMN birth_month tinyint unsigned GENERATED ALWAYS AS (MONTH(birth_date)) VIRTUAL NOT NULL, ADD INDEX (birth_month);",
+        "B": "ALTER TABLE employees ADD INDEX (birth_date DESC);",
+        "C": "ALTER TABLE employees ADD INDEX (birth_date);",
+        "D": "ALTER TABLE employees ADD COLUMN birth_month tinyint unsigned GENERATED ALWAYS AS (birth_date, $.month') VIRTUAL NOT NULL, ADD INDEX (birth_month);",
+        "E": "ALTER TABLE employees ADD INDEX ((MONTH(birth_date)));",
+        "F": "ALTER TABLE employees ADD INDEX (birth_date DESC);"
+    },
+    "answers": ["A", "E"],
+    "summary": "#### 选项分析\n- **A**: 正确。通过添加一个虚拟生成列 `birth_month`，并基于 `MONTH(birth_date)` 创建索引，可以直接优化查询性能，因为索引可以加速对月份的过滤。\n- **B**: 错误。虽然为 `birth_date` 添加索引是合理的，但直接使用 `MONTH(birth_date)` 的查询无法利用这个索引，因为函数调用会阻止索引的使用。\n- **C**: 错误。与选项 B 类似，为 `birth_date` 添加索引无法优化基于 `MONTH(birth_date)` 的查询。\n- **D**: 错误。语法错误，且逻辑不合理。生成列的定义中包含无效的表达式 `$.month'`，并且无法正确实现预期功能。\n- **E**: 正确。直接为 `MONTH(birth_date)` 创建索引，可以优化查询性能，因为索引会覆盖函数调用的结果。\n- **F**: 错误。与选项 B 和 C 类似，为 `birth_date` 添加降序索引无法优化基于 `MONTH(birth_date)` 的查询。\n\n#### 考点总结\n- **索引优化**：理解如何通过创建适当的索引来优化查询性能，特别是涉及函数调用（如 `MONTH()`）的情况。\n- **生成列**：掌握如何使用生成列（Generated Columns）来简化查询逻辑，并结合索引提高性能。\n- **函数索引**：了解如何为函数结果创建索引，以避免函数调用导致的索引失效问题。",
+    "suggestion": "#### 应试技巧\n1. **关注索引适用性**：在设计索引时，确保索引能够被查询直接使用，避免因函数调用或复杂表达式导致索引失效。\n2. **利用生成列**：对于频繁使用的计算字段，考虑使用生成列来简化查询逻辑，并结合索引优化性能。\n3. **识别语法错误**：仔细检查选项中的 SQL 语法，排除明显错误的选项，缩小选择范围。\n\n#### 学习建议\n1. **深入理解索引机制**：学习 MySQL 中索引的工作原理，特别是如何处理函数调用和复杂表达式。\n2. **练习生成列和函数索引**：通过实际操作练习生成列和函数索引的创建与使用，理解其对查询性能的影响。\n3. **复习考试大纲**：根据考试大纲中的“Query Optimization”部分，重点复习如何优化查询性能，包括索引、生成列等技术。"
+}

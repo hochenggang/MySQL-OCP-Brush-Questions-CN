@@ -1,0 +1,13 @@
+{
+    "question": "应使用以下哪个实用程序来查看按平均查询时间排序的慢速查询日志中的查询？",
+    "selections": {
+        "A": "mysqlimport",
+        "B": "mysqlcheck",
+        "C": "mysqldump",
+        "D": "mysqlshow",
+        "E": "mysqldumpslow"
+    },
+    "answers": ["E"],
+    "summary": "选项分析：\n- **A. mysqlimport**：用于从文本文件导入数据到 MySQL 数据库，与慢查询日志无关。\n- **B. mysqlcheck**：用于检查、修复和优化表，与慢查询日志无关。\n- **C. mysqldump**：用于逻辑备份数据库，与慢查询日志无关。\n- **D. mysqlshow**：用于显示数据库、表或列的信息，与慢查询日志无关。\n- **E. mysqldumpslow**：专门用于解析慢查询日志文件，并按指定条件（如平均查询时间）排序输出，符合题意。\n\n考点总结：本题考查 MySQL 实用程序的功能，特别是 `mysqldumpslow` 的作用，它是分析慢查询日志的关键工具。",
+    "suggestion": "应试技巧：\n1. 熟悉 MySQL 常用实用程序的功能，尤其是那些与日志分析相关的工具。\n2. 记住 `mysqldumpslow` 是专门用于解析慢查询日志的工具，能够按时间、次数等条件排序输出。\n3. 在复习时，可以结合实际操作，运行 `mysqldumpslow` 命令，加深理解其输出格式和参数。\n\n学习建议：\n1. 查阅官方文档，详细了解 `mysqldumpslow` 的语法和常用选项。\n2. 结合考试大纲中“Monitoring and Maintenance”部分的内容，掌握如何监控和分析 MySQL 性能问题。\n3. 练习使用 `mysqldumpslow` 分析慢查询日志，理解其在性能调优中的重要性。"
+}

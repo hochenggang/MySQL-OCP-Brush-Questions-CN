@@ -1,0 +1,12 @@
+{
+    "question": "您希望转储名称以 \"db\" 开头的所有数据库。下列哪个命令可实现此目的？",
+    "selections": {
+        "A": "mysqlpump --include-tables=db.% --result-file=all_db_backup.sql",
+        "B": "mysqlpump --include-databases=db% --result-file=all_db_backup.sql",
+        "C": "mysqlpump > all_db_backup.sql",
+        "D": "mysqlpump --include-databases-db --result-file-all db_backup.sql"
+    },
+    "answers": ["B"],
+    "summary": "本题考查的是如何使用 `mysqlpump` 命令转储特定模式的数据库。选项分析如下：\n- **A**: 使用 `--include-tables` 参数，但该参数用于指定表，而非数据库，因此不正确。\n- **B**: 正确使用了 `--include-databases` 参数，并通过通配符 `db%` 指定以 \"db\" 开头的数据库，同时指定了输出文件名，符合题意。\n- **C**: 未使用任何过滤参数，直接将所有内容重定向到文件，无法满足题目要求。\n- **D**: 参数格式错误，`--include-databases-db` 和 `--result-file-all` 的写法不符合规范。\n**考点总结**: `mysqlpump` 的基本用法，特别是如何使用 `--include-databases` 参数结合通配符来筛选目标数据库。",
+    "suggestion": "1. **应试技巧**：\n   - 熟悉 `mysqlpump` 的常用参数，尤其是 `--include-databases` 和 `--result-file` 的用法。\n   - 注意参数的正确书写格式，避免拼写错误或语法问题。\n2. **学习建议**：\n   - 查阅 MySQL 官方文档，详细了解 `mysqlpump` 的功能和参数。\n   - 实践操作，尝试使用 `mysqlpump` 转储不同类型的数据库，加深理解。\n   - 关注考试大纲中关于备份与恢复策略的部分，掌握逻辑备份和物理备份的区别及应用场景。"
+}

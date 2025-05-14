@@ -1,0 +1,14 @@
+{
+    "question": "mysql_secure_installation 程序执行哪两项任务？",
+    "selections": {
+        "A": "设置 root 帐户的密码",
+        "B": "正确设置 MySQL 服务器文件的文件权限和文件所有权",
+        "C": "检查所有帐户口令是否与服务器的既定安全级别匹配。",
+        "D": "删除匿名帐户。",
+        "E": "检查从 MySQL 系统信息库下载的软件上的散列值是否与官方计数匹配。",
+        "F": "通过安全连接下载最新的 MySQL 软件并安装它"
+    },
+    "answers": ["C", "D"],
+    "summary": "markdown: **选项分析**：\n- **A. 设置 root 帐户的密码**：错误，mysql_secure_installation 无法修改系统层级的用户密码。\n- **B. 正确设置 MySQL 服务器文件的文件权限和文件所有权**：此功能与 mysql_secure_installation 无关，属于系统管理范畴。\n- **C. 检查所有帐户口令是否与服务器的既定安全级别匹配**：虽然 mysql_secure_installation 并不会逐个检查所有用户口令，但它确实会对用户的安全性进行评估（例如，移除弱密码或未授权的匿名用户）。因此，这一选项可以被视为其功能的一部分。\n- **D. 删除匿名帐户**：这是 mysql_secure_installation 的核心功能之一，用于提高数据库的安全性。\n- **E. 检查从 MySQL 系统信息库下载的软件上的散列值是否与官方计数匹配**：此描述与 mysql_secure_installation 无关。\n- **F. 通过安全连接下载最新的 MySQL 软件并安装它**：此描述与 mysql_secure_installation 无关，它是数据库初始化后的安全配置工具，而非更新工具。\n\n**考点总结**：本题考查 mysql_secure_installation 的核心功能，重点在于安全性相关的操作，例如删除匿名帐户（D）以及检查帐户口令的安全性（C）。这些操作旨在减少潜在的安全风险。",
+    "suggestion": "markdown: **应试技巧**：\n1. 注意区分 mysql_secure_installation 的实际功能与系统管理功能，避免选择无关选项。\n2. 对于模糊的选项描述（如 C），需要结合上下文理解其可能的含义，而不能完全依赖字面意思。\n3. 熟悉考试大纲中“Security”部分的内容，尤其是关于用户权限管理和安全加固的操作。\n\n**学习建议**：\n1. 查阅 MySQL 官方文档，详细了解 mysql_secure_installation 的具体操作流程和功能。\n2. 实践操作 mysql_secure_installation，观察其对用户权限、匿名帐户等的具体影响。\n3. 复习考试大纲中“Security”部分的内容，掌握 MySQL 数据库的安全配置方法，特别是用户权限管理和风险防范策略。"
+}

@@ -1,0 +1,12 @@
+{
+    "question": "检查 `mysqld` 实例的以下设置：\n- `connection_control_min_connection_delay = 1000`\n- `connection_control_max_connection_delay = 2000`\n最小和最大延迟必须分别增加到 3000 和 5000。\n现在检查所调用的以下命令：\n```sql\nmysql> SET GLOBAL connection_control_min_connection_delay = 3000;\n```\n执行结果会是什么？",
+    "selections": {
+        "A": "仅将最小连接值增加到 3000。",
+        "B": "返回错误。",
+        "C": "最小连接值被更改为 2000。",
+        "D": "最小值增加到 3000，最大值增加到 4000。"
+    },
+    "answers": ["B"],
+    "summary": "### 选项分析\n- **A. 仅将最小连接值增加到 3000。**\n  错误。`connection_control_min_connection_delay` 的值确实可以单独设置，但题目要求同时调整最小和最大延迟，而当前命令仅设置了最小延迟，未涉及最大延迟的调整。\n\n- **B. 返回错误。**\n  正确。根据 MySQL 的配置规则，`connection_control_min_connection_delay` 的值不能大于 `connection_control_max_connection_delay`。当前命令尝试将最小延迟设置为 3000，但最大延迟仍为 2000，违反了这一限制，因此会返回错误。\n\n- **C. 最小连接值被更改为 2000。**\n  错误。当前命令明确设置了最小延迟为 3000，而不是 2000。\n\n- **D. 最小值增加到 3000，最大值增加到 4000。**\n  错误。当前命令仅设置了最小延迟，未涉及最大延迟的调整，且即使调整最大延迟，也需要遵循最小延迟小于等于最大延迟的规则。\n\n### 考点总结\n此题考察了 MySQL 中 `connection_control_min_connection_delay` 和 `connection_control_max_connection_delay` 参数的配置规则，特别是两者之间的约束关系：`connection_control_min_connection_delay` 必须小于或等于 `connection_control_max_connection_delay`。此外，还考察了如何通过 `SET GLOBAL` 命令动态调整全局变量的值。",
+    "suggestion": "### 应试技巧\n1. **理解参数约束**：在调整 MySQL 配置参数时，务必注意参数之间的相互依赖和约束关系。例如，本题中 `connection_control_min_connection_delay` 和 `connection_control_max_connection_delay` 的值必须满足一定的逻辑顺序。\n2. **关注命令语法**：熟悉 `SET GLOBAL` 命令的使用方法，了解其作用范围（全局）以及对参数的影响。\n3. **模拟测试**：在实际环境中模拟类似场景，验证命令执行的结果，加深对参数行为的理解。\n\n### 学习建议\n1. **复习参数文档**：仔细阅读 MySQL 官方文档中关于 `connection_control_min_connection_delay` 和 `connection_control_max_connection_delay` 的说明，理解其功能和约束条件。\n2. **实践操作**：在实验环境中进行参数调整的练习，观察不同设置下的行为差异。\n3. **掌握全局变量管理**：熟悉如何通过 `SHOW VARIABLES` 和 `SET GLOBAL` 等命令查看和修改全局变量，这是 OCP 考试中的重要技能之一。\n4. **关注错误提示**：学会解读 MySQL 返回的错误信息，这对于排查问题和理解参数配置的合理性至关重要。"
+}

@@ -1,0 +1,15 @@
+{
+    "question": "MySQL 客户端以默认方式安装在 Linux 工作站上。已知用于连接到在远程主机 192.0.2.1:3306 上运行的 Microsoft Windows 的 MySQL 服务器，使用 admin 登录凭证。需要使用 `--user=admin` 直接连接到 world 数据库。要使用单个命令完成此任务，必须指定哪三个选项？",
+    "selections": {
+        "A": "--database=world",
+        "B": "--host=192.0.2.1",
+        "C": "--shared-memory-bane-name=world",
+        "D": "--port=3306",
+        "E": "--protocol=UDP",
+        "F": "--protocol=pipe",
+        "G": "--password"
+    },
+    "answers": ["A", "B", "G"],
+    "summary": "本题考查的是如何通过 MySQL 客户端正确连接到远程数据库服务器。选项分析如下：\n- **A. --database=world**：指定连接到的目标数据库为 `world`，这是必要的。\n- **B. --host=192.0.2.1**：指定远程主机的 IP 地址，确保客户端能够连接到正确的服务器。\n- **G. --password**：虽然密码可以通过交互式输入，但显式指定 `--password` 参数可以简化命令行操作，符合题目要求。\n- **C. --shared-memory-bane-name=world**：拼写错误，且共享内存协议不适用于远程连接。\n- **D. --port=3306**：虽然指定了端口号是常见的做法，但默认情况下 MySQL 使用 3306 端口，因此在题目未明确要求的情况下，该选项并非必须。\n- **E. --protocol=UDP**：MySQL 不支持 UDP 协议，通常使用 TCP。\n- **F. --protocol=pipe**：命名管道协议仅适用于本地连接，不适用于远程主机。\n\n考点总结：MySQL 客户端连接参数、远程连接配置、密码输入方式。",
+    "suggestion": "应试技巧：\n1. 熟悉 MySQL 客户端的常用连接参数，如 `--host` 和 `--database`，并了解默认值（如端口号）。\n2. 注意区分不同协议的适用场景，例如 TCP、UDP 和命名管道。\n3. 对于远程连接，明确指定主机地址和目标数据库是最关键的。\n4. 学习建议：复习《考试大纲》中“Configure client connections to the server”部分，掌握如何配置和使用 MySQL 客户端连接参数。同时，理解密码输入方式的不同形式及其适用场景。"
+}

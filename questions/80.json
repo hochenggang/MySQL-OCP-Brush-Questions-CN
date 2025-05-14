@@ -1,0 +1,14 @@
+{
+    "question": "关于 MySQL Enterprise Backup，下列哪两项描述是正确的？",
+    "selections": {
+        "A": "它支持恢复到远程 MySQL 系统。",
+        "B": "它支持仅备份表结构。",
+        "C": "它可以执行热备份或温备份。",
+        "D": "它支持远程 MySQL 系统的备份。",
+        "E": "它支持创建增量备份。",
+        "F": "它创建逻辑备份。"
+    },
+    "answers": ["C", "E"],
+    "summary": "选项分析：\n- **A. 它支持恢复到远程 MySQL 系统。** \n  错误。MySQL Enterprise Backup 主要用于本地备份和恢复，不直接支持将备份恢复到远程系统。\n- **B. 它支持仅备份表结构。** \n  错误。MySQL Enterprise Backup 是物理备份工具，主要用于备份整个数据库实例，而非仅备份表结构。\n- **C. 它可以执行热备份或温备份。** \n  正确。MySQL Enterprise Backup 支持在数据库运行时进行备份（热备份），也可以在锁定某些表的情况下进行备份（温备份）。\n- **D. 它支持远程 MySQL 系统的备份。** \n  错误。MySQL Enterprise Backup 需要在目标 MySQL 实例上运行，不直接支持远程系统的备份。\n- **E. 它支持创建增量备份。** \n  正确。MySQL Enterprise Backup 支持增量备份功能，可以基于之前的完整备份进行增量更新。\n- **F. 它创建逻辑备份。** \n  错误。MySQL Enterprise Backup 是物理备份工具，而非逻辑备份工具（如 mysqldump）。逻辑备份通常通过 mysqldump 或 mysqlpump 实现。\n\n考点总结：本题考查对 MySQL Enterprise Backup 功能的理解，包括其备份类型（热备份、温备份）、增量备份支持以及与逻辑备份的区别。",
+    "suggestion": "应试技巧：\n1. **理解核心概念**：明确 MySQL Enterprise Backup 是物理备份工具，支持热备份、温备份和增量备份，但不涉及逻辑备份或远程系统操作。\n2. **区分备份类型**：熟悉物理备份与逻辑备份的区别，物理备份（如 MySQL Enterprise Backup）备份的是数据文件，而逻辑备份（如 mysqldump）备份的是 SQL 脚本。\n3. **关注细节**：注意题目中提到的功能是否符合 MySQL Enterprise Backup 的实际能力，避免被误导。\n\n学习建议：\n1. **深入学习备份工具**：掌握 MySQL Enterprise Backup 的使用方法及其与其他备份工具（如 mysqldump、mysqlpump）的区别。\n2. **实践操作**：通过实际操作 MySQL Enterprise Backup，加深对其功能和特性的理解。\n3. **复习考试大纲**：根据考试大纲中的“Backups and Recovery”部分，全面复习备份策略和相关技术，确保对备份工具的掌握无遗漏。"
+}

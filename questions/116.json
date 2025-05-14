@@ -1,0 +1,13 @@
+{
+    "question": "下列哪些是有助于实现数据库高可用性的 MySQL InnoDB 集群的两个组件？",
+    "selections": {
+        "A": "MySQL Router，确保客户端的请求负载均衡并路由到正确的服务器实例。",
+        "B": "MySQL Enterprise Backup，确保数据一致并始终可供使用。",
+        "C": "MySQL X 插件，允许 MySQL 使用 X 协议来加速和监视数据库复制。",
+        "D": "MySQL 半同步复制插件，用于提供集群一致性。",
+        "E": "MySQL Shell，使用内置 Admin API 来创建和管理 InnoDB 集群。"
+    },
+    "answers": ["A", "E"],
+    "summary": "### 选项分析\n- **A. MySQL Router**：MySQL Router 是 MySQL InnoDB 集群中的关键组件之一，负责将客户端请求路由到适当的服务器实例，并实现负载均衡，从而提高系统的可用性和性能。这是正确答案。\n- **B. MySQL Enterprise Backup**：虽然 MySQL Enterprise Backup 是一个强大的备份工具，但它主要用于数据备份和恢复，与高可用性直接相关性较低，因此不是正确答案。\n- **C. MySQL X 插件**：X 插件确实支持使用 X 协议进行加速和监控，但其主要功能并非直接提升高可用性，而是增强协议支持和管理能力，因此不完全符合题意。\n- **D. MySQL 半同步复制插件**：半同步复制插件主要用于保证主从复制的一致性，而不是直接提升高可用性，因此不是正确答案。\n- **E. MySQL Shell**：MySQL Shell 提供了内置的 Admin API，可用于创建、管理和监控 InnoDB 集群，是实现高可用性的重要工具之一，因此是正确答案。\n\n### 考点总结\n本题考查的是 MySQL InnoDB 集群中与高可用性相关的组件。重点在于理解各个组件的功能及其在高可用性场景中的作用。MySQL Router 和 MySQL Shell 是实现高可用性的重要组成部分，而其他选项更多涉及备份、复制或协议支持，与高可用性的直接关联较弱。",
+    "suggestion": "### 应试技巧\n1. **理解核心概念**：明确高可用性（High Availability）的核心需求，例如负载均衡、故障转移等，然后判断选项是否直接满足这些需求。\n2. **区分功能**：仔细区分各组件的功能，例如备份工具、复制插件、路由工具等，避免混淆。\n3. **关注官方文档**：熟悉 MySQL 官方文档中关于 InnoDB 集群的架构和组件介绍，特别是 MySQL Router 和 MySQL Shell 的作用。\n\n### 学习建议\n1. **深入学习 InnoDB 集群架构**：掌握 MySQL InnoDB 集群的组成，包括 MySQL Router、MySQL Shell、InnoDB Cluster 等组件的功能和作用。\n2. **实践操作**：通过实际部署和管理 InnoDB 集群，加深对高可用性组件的理解。\n3. **复习高可用性策略**：了解如何通过配置和管理 InnoDB 集群实现高可用性，包括故障转移、负载均衡等技术。"
+}

@@ -1,0 +1,13 @@
+{
+    "question": "必须从 `world_x` 数据库的一组表中导出数据。分析这组表：`country`, `countryinfo`, `location`。哪两个选项会将数据导出到一个或多个文件中？",
+    "selections": {
+        "A": "shell> mysqlexport world_x country countryinfo location > mydump.sql",
+        "B": "mysql> SELECT * INTO OUTFILE '/output/country.bxt' FROM world_x.country;\nmysql> SELECT * INTO OUTFILE '/output/countryinfo.txt' FROM world_x.countryinfo;\nmysql> SELECT * INTO OUTFILE '/output/location.txt' FROM world_x.location;",
+        "C": "mysql> CLONE LOCAL DATA DIRECTORY='/var/lib/mysql/world_x/country';\nmysql> CLONE LOCAL DATA DIRECTORY='/var/lib/mysql/world_x/countryinfo';\nmysql> CLONE LOCAL DATA DIRECTORY='/var/lib/mysql/world_x/location';",
+        "D": "shell> mysql --batch world_x.country world_x.countryinfo world_x.location > mydump.sql",
+        "E": "shell> mysqldump world_x country countryinfo location > mydump.sql"
+    },
+    "answers": ["B", "E"],
+    "summary": "### 选项分析\n- **A**: `mysqlexport` 并非 MySQL 的官方命令，因此此选项无效。\n- **B**: 使用 `SELECT * INTO OUTFILE` 可以将每个表的数据导出到指定的文件中，符合题意。\n- **C**: `CLONE LOCAL DATA DIRECTORY` 是用于克隆数据目录的命令，而非导出数据，因此此选项不符合题意。\n- **D**: `mysql --batch` 本身不会直接导出数据，需要结合其他命令或工具（如 `mysqldump`）才能实现导出，因此此选项无效。\n- **E**: `mysqldump` 是 MySQL 官方提供的逻辑备份工具，可以将指定的表导出到一个文件中，符合题意。\n\n### 考点总结\n- **备份与恢复**: 本题考察了 MySQL 中数据导出的方法，包括逻辑备份工具 `mysqldump` 和直接导出文件的 SQL 语句 `SELECT * INTO OUTFILE`。\n- **命令理解**: 需要区分 MySQL 的官方命令和非标准命令，例如 `mysqlexport` 是无效的。\n- **导出方式**: 了解不同导出方式的适用场景，如 `mysqldump` 适合逻辑备份，`SELECT * INTO OUTFILE` 适合直接导出到文件。",
+    "suggestion": "### 应试技巧\n1. **熟悉官方命令**: 确保对 MySQL 的官方命令（如 `mysqldump`, `SELECT * INTO OUTFILE`）有深入理解，避免被非标准命令（如 `mysqlexport`）迷惑。\n2. **区分导出方式**: 明确不同导出方式的用途，例如 `mysqldump` 用于逻辑备份，`SELECT * INTO OUTFILE` 用于直接导出数据到文件。\n3. **实践操作**: 通过实际操作练习 `mysqldump` 和 `SELECT * INTO OUTFILE`，加深对命令的理解和记忆。\n\n### 学习建议\n1. **复习备份与恢复章节**: 重点学习考试大纲中“Backups and Recovery”部分，掌握 `mysqldump` 和其他备份工具的使用方法。\n2. **理解 SQL 语句**: 加强对 SQL 语句（如 `SELECT * INTO OUTFILE`）的理解，掌握其语法和应用场景。\n3. **模拟练习**: 使用实际的 MySQL 环境，模拟导出数据的场景，巩固知识点。\n4. **关注官方文档**: 定期查阅 MySQL 官方文档，确保对最新命令和功能有全面了解。"
+}

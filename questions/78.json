@@ -1,0 +1,15 @@
+{
+    "question": "MySQL 服务器正在 Microsoft Windows 平台上运行。下列哪三种本地连接协议可用？",
+    "selections": {
+        "A": "X Protocol",
+        "B": "命名管道 (named pipes)",
+        "C": "共享内存",
+        "D": "UDP",
+        "E": "HTTP",
+        "F": "TCP/IP",
+        "G": "SOCKET"
+    },
+    "answers": ["B", "C", "F"],
+    "summary": "在 Microsoft Windows 平台上，MySQL 支持的本地连接协议包括：\n- **命名管道 (named pipes)**：Windows 系统特有的通信机制，适用于本地连接。\n- **共享内存**：通过共享内存进行数据传输，适用于本地连接。\n- **TCP/IP**：虽然通常用于远程连接，但在本地环境中也可以使用。\n\n**选项分析**：\n- **A. X Protocol**：这是 MySQL 的一种网络协议，但主要用于分布式环境，而非本地连接。\n- **B. 命名管道 (named pipes)**：Windows 平台上的本地连接协议之一。\n- **C. 共享内存**：Windows 平台上的本地连接协议之一。\n- **D. UDP**：通常不用于 MySQL 的连接协议。\n- **E. HTTP**：与 MySQL 的连接无关。\n- **F. TCP/IP**：虽然主要用于远程连接，但在本地环境中也支持。\n- **G. SOCKET**：Socket 是底层通信机制，不是具体的协议类型。\n\n**考点总结**：本题考察的是 MySQL 在 Windows 平台上的本地连接协议，需要了解不同协议的适用场景。",
+    "suggestion": "1. **应试技巧**：\n   - 熟悉 MySQL 在不同平台上的连接协议。\n   - 区分本地连接和远程连接的常用协议。\n   - 注意平台特性，例如 Windows 平台特有的命名管道。\n\n2. **学习建议**：\n   - 查阅 MySQL 官方文档中关于连接协议的部分，特别是针对 Windows 平台的内容。\n   - 理解每种协议的工作原理及其适用场景。\n   - 实践配置不同的连接协议，加深理解。\n\n3. **复习重点**：\n   - MySQL 的连接协议分类（本地 vs 远程）。\n   - 不同平台（如 Windows、Linux）支持的连接协议。\n   - 配置文件 (`my.cnf` 或 `my.ini`) 中的相关参数设置。"
+}

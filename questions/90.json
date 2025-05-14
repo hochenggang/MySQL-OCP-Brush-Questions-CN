@@ -1,0 +1,12 @@
+{
+    "question": "t 是非空 InnoDB 表。分析以下语句，它们在一个会话中执行：\nBEGIN;\nSELECT FROM t FOR UPDATE;\n以下哪项是正确的？",
+    "selections": {
+        "A": "mysqlcheck --analyze --all-databases 将在所有表上正常执行并返回报告。",
+        "B": "如果从同一会话中调用 ANALYZE TABLE; 则会在提交或回退事务之前挂起。",
+        "C": "如果调用 OPTIMIZE TABLE; 则会在 t 上创建表锁定并强制回退事务。",
+        "D": "如果从另一个会话调用 OPTIMIZE LOCAL TABLE t; 则它正常执行并返回状态。"
+    },
+    "answers": ["C"],
+    "summary": "### 选项分析\n- **A. mysqlcheck --analyze --all-databases 将在所有表上正常执行并返回报告。**\n  - 错误。`mysqlcheck` 是一个命令行工具，用于检查和修复表。虽然它可以分析表，但不会在事务中挂起或影响当前会话的锁状态。\n\n- **B. 如果从同一会话中调用 ANALYZE TABLE; 则会在提交或回退事务之前挂起。**\n  - 错误。`ANALYZE TABLE` 不会挂起事务，也不会与当前事务冲突。它主要用于更新表的统计信息，通常不会影响事务的执行。\n\n- **C. 如果调用 OPTIMIZE TABLE; 则会在 t 上创建表锁定并强制回退事务。**\n  - 正确。`OPTIMIZE TABLE` 操作会对表进行优化，包括重建索引、整理碎片等。由于它是独占操作，会获取表级锁，因此会强制回退当前事务以确保操作顺利进行。\n\n- **D. 如果从另一个会话调用 OPTIMIZE LOCAL TABLE t; 则它正常执行并返回状态。**\n  - 错误。`OPTIMIZE LOCAL TABLE` 并不是一个标准的 MySQL 命令，且即使是从另一个会话调用 `OPTIMIZE TABLE`，也可能会因表级锁而影响当前事务。\n\n### 考点总结\n1. **事务与锁机制**：理解 `SELECT ... FOR UPDATE` 和事务中的锁行为。\n2. **MySQL 命令的影响**：熟悉 `OPTIMIZE TABLE` 的工作原理及其对表锁的影响。\n3. **多会话操作**：了解不同会话中执行命令时的潜在冲突和锁问题。\n4. **表优化与维护**：掌握如何使用 `OPTIMIZE TABLE` 对表进行优化，并理解其对事务的影响。",
+    "suggestion": "### 应试技巧\n1. **理解核心概念**：仔细复习事务、锁机制以及 MySQL 中常用命令（如 `OPTIMIZE TABLE`、`ANALYZE TABLE` 等）的工作原理。\n2. **关注细节**：题目中提到的 `SELECT ... FOR UPDATE` 和 `OPTIMIZE TABLE` 都涉及锁机制，需明确它们的行为差异。\n3. **排除法**：对于不确定的选项，可以通过排除明显错误的选项来缩小范围。\n\n### 学习建议\n1. **深入学习锁机制**：事务中的锁（如行锁、表锁）是 MySQL 高级管理的重要内容，建议结合官方文档和实际案例深入理解。\n2. **实践操作**：通过实验环境模拟题干中的场景，观察不同命令对事务和锁的影响。\n3. **复习考试大纲**：根据考试大纲中的“Query Optimization”和“Monitoring and Maintenance”部分，系统复习相关知识点，特别是与表优化和事务管理相关的命令和行为。"
+}
