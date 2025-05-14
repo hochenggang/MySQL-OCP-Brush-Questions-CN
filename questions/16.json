@@ -1,5 +1,5 @@
 {
-  "question": "使用以下命令进行备份：```\nmysqldump --master-data=2 --single-transaction -result-file=dump.sql mydb\n```\n以下关于该命令的描述，哪些是正确的？",
+  "question": "使用以下命令进行备份：\n```\nmysqldump --master-data=2 --single-transaction -result-file=dump.sql mydb\n```\n以下关于该命令的描述，哪些是正确的？",
   "selections": {
     "A": "它为所有存储引擎强制执行一致备份。",
     "B": "创建的备份是一致的数据转储。",
