@@ -505,7 +505,7 @@
     "suggestion": "### 应试技巧\n1. **抓住关键字**：题目中的 `--flush-logs` 是解题关键，应结合大纲中关于日志管理的内容进行分析。\n2. **排除法优先**：通过排除明显错误的选项（如 A 和 B），可以快速缩小答案范围。\n3. **验证逻辑**：对于剩余选项，注意验证其描述是否完全符合官方文档或实际功能。\n\n### 学习建议\n1. **深入理解命令参数**：熟练掌握 `mysqldump` 及其常用参数（如 `--single-transaction`、`--flush-logs` 等）的作用及场景。\n2. **实践验证理论**：在测试环境中运行相关命令，观察日志文件的变化以加深理解。\n3. **参考权威资料**：学习过程中建议查阅 MySQL 官方文档及认证考试指南，确保知识点无误。\n4. **模拟练习**：多做类似真题，强化对高频考点的记忆与应用能力。"
   },
   {
-    "question": "使用以下命令进行备份：```\nmysqldump --master-data=2 --single-transaction -result-file=dump.sql mydb\n```\n以下关于该命令的描述，哪些是正确的？",
+    "question": "使用以下命令进行备份：\n```\nmysqldump --master-data=2 --single-transaction -result-file=dump.sql mydb\n```\n以下关于该命令的描述，哪些是正确的？",
     "selections": {
       "A": "它为所有存储引擎强制执行一致备份。",
       "B": "创建的备份是一致的数据转储。",
