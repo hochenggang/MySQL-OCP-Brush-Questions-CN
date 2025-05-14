@@ -109,7 +109,7 @@
     "suggestion": "### 应试技巧\n1. **抓住关键字**：题目中的 `--flush-logs` 是解题关键，应结合大纲中关于日志管理的内容进行分析。\n2. **排除法优先**：通过排除明显错误的选项（如 A 和 B），可以快速缩小答案范围。\n3. **验证逻辑**：对于剩余选项，注意验证其描述是否完全符合官方文档或实际功能。\n\n### 学习建议\n1. **深入理解命令参数**：熟练掌握 `mysqldump` 及其常用参数（如 `--single-transaction`、`--flush-logs` 等）的作用及场景。\n2. **实践验证理论**：在测试环境中运行相关命令，观察日志文件的变化以加深理解。\n3. **参考权威资料**：学习过程中建议查阅 MySQL 官方文档及认证考试指南，确保知识点无误。\n4. **模拟练习**：多做类似真题，强化对高频考点的记忆与应用能力。"
   },
   {
-    "question": "使用以下命令进行备份：```bash\nmysqldump --master-data=2 --single-transaction -result-file=dump.sql mydb\n```\n以下关于该命令的描述，哪些是正确的？",
+    "question": "使用以下命令进行备份：```\nmysqldump --master-data=2 --single-transaction -result-file=dump.sql mydb\n```\n以下关于该命令的描述，哪些是正确的？",
     "selections": {
       "A": "它为所有存储引擎强制执行一致备份。",
       "B": "创建的备份是一致的数据转储。",
@@ -169,8 +169,8 @@
       "A",
       "E"
     ],
-    "summary": "markdown: ### 选项分析\n- **A**: 锁定用户账户后，新连接将被阻止，但现有会话不受影响，因此符合要求。\n- **B**: 移除默认角色仅限制权限，不会阻止新连接，不符合要求。\n- **C**: 设置最大连接数为0确实能阻止新连接，但此选项可能存在拼写错误，需谨慎处理。\n- **D**: 禁用密码可能允许其他认证方式（如插件）继续生效，无法完全阻止新连接，不符合要求。\n- **E**: 使用 `mysql_no_login` 插件明确禁止用户登录，满足题目需求。\n\n### 考点总结\n本题考察 MySQL 用户管理中的安全性配置，重点涉及用户锁定、身份验证插件及资源限制等内容。理解这些功能的适用场景是确保数据库安全的关键。",
-    "suggestion": "markdown: ### 应试技巧\n1. **熟悉官方文档**：MySQL 的命令语法和选项较多，建议结合 [MySQL 官方文档](https://dev.mysql.com/doc/) 复习相关命令。\n2. **注意细节**：题目可能存在拼写错误或歧义，需根据上下文合理推断。\n3. **模拟实验**：在本地环境中测试命令的实际效果，加深对功能的理解。\n\n### 学习建议\n- **强化实操**：通过安装 MySQL 并配置用户权限，掌握常见安全管理操作。\n- **关注安全机制**：深入学习 MySQL 的身份验证插件（如 `mysql_no_login`）和资源控制（如 `MAX_USER_CONNECTIONS`）。\n- **案例分析**：研究真实场景中的安全问题及其解决方案，提升综合应用能力。"
+    "summary": "### 选项分析\n- **A**: 锁定用户账户后，新连接将被阻止，但现有会话不受影响，因此符合要求。\n- **B**: 移除默认角色仅限制权限，不会阻止新连接，不符合要求。\n- **C**: 设置最大连接数为0确实能阻止新连接，但此选项可能存在拼写错误，需谨慎处理。\n- **D**: 禁用密码可能允许其他认证方式（如插件）继续生效，无法完全阻止新连接，不符合要求。\n- **E**: 使用 `mysql_no_login` 插件明确禁止用户登录，满足题目需求。\n\n### 考点总结\n本题考察 MySQL 用户管理中的安全性配置，重点涉及用户锁定、身份验证插件及资源限制等内容。理解这些功能的适用场景是确保数据库安全的关键。",
+    "suggestion": "### 应试技巧\n1. **熟悉官方文档**：MySQL 的命令语法和选项较多，建议结合 [MySQL 官方文档](https://dev.mysql.com/doc/) 复习相关命令。\n2. **注意细节**：题目可能存在拼写错误或歧义，需根据上下文合理推断。\n3. **模拟实验**：在本地环境中测试命令的实际效果，加深对功能的理解。\n\n### 学习建议\n- **强化实操**：通过安装 MySQL 并配置用户权限，掌握常见安全管理操作。\n- **关注安全机制**：深入学习 MySQL 的身份验证插件（如 `mysql_no_login`）和资源控制（如 `MAX_USER_CONNECTIONS`）。\n- **案例分析**：研究真实场景中的安全问题及其解决方案，提升综合应用能力。"
   },
   {
     "question": "用户 `jsmith` 被授予如下权限：\n\n```sql\nGRANT USAGE ON *.* TO 'jsmith'@'%';\nGRANT UPDATE (name) ON world.country TO 'jsmith'@'%';\n```\n\n请问以下哪些 SQL 语句 `jsmith` 可以执行？",
@@ -706,18 +706,18 @@
     "suggestion": "在备考过程中，应重点掌握 MySQL 各类日志（如错误日志、二进制日志、慢查询日志）的管理方式及其配置方法。理解 `FLUSH` 命令的作用和适用场景是关键。建议结合实际操作练习日志刷新与轮换流程，避免混淆不同日志类型的处理逻辑。同时注意区分 MySQL 原生日志机制与外部工具（如 logrotate）的功能差异。"
   },
   {
-    "question": "使用带有新配置的旧服务器，MySQL Server 无法启动。请查看以下错误日志快照：\n\n```\n190925 12:49:05 InnoDB: Initializing buffer pool, size = 3.0G\n190925 12:49:05 InnoDB: completed Initializing of buffer pool\nInnoDB: Error: log file ./ib_logfile0 is of different size 0 5242880 bytes\nInnoDB: than specified in the .cnf file 0 26214400 bytes!\n190925 12:49:05 [ERROR] Plugin 'InnoDB' in it function returned error.\n190925 12:49:05 [ERROR] Plugin 'InnoDB' registration as a STORAGE ENGINE failed.\n190925 12:49:05 [ERROR] Aborting\n190925 12:49:05 [Note] /usr/sbin/mysqld: shutdown complete\n```\n哪个操作能允许服务器启动？",
+    "question": "检查以下命令和输出：```sql\nmysql> SHOW GLOBAL STATUS LIKE '%Firewall%';\n```\n输出如下：```\n+---------------------------+-------+\n| Variable_name             | Value |\n+---------------------------+-------+\n| Firewall_access_denied    | 7     |\n| Firewall_access_granted   | 4     |\n| Firewall_access_suspicious| 3     |\n| Firewall_cached_entries   | 11    |\n+---------------------------+-------+\n```\n下列哪项描述是正确的？",
     "selections": {
-      "A": "执行 `mysqladmin flush-logs`",
-      "B": "创建大小为 26214400 的新 `ib_logfile0` 文件",
-      "C": "从文件系统中删除 `ib_logfile0` 和 `ib_logfile1` 文件",
-      "D": "首先运行 `mysqld --initialize` 来刷新 `ib_logfile` 的大小"
+      "A": "`Firewall_access_denied` 是被拒绝的连接尝试次数。",
+      "B": "`Firewall_cached_entries` 是在查询缓存中，为处于 `DETECTING` 模式的用户找到的语句数。",
+      "C": "`Firewall_access_granted` 是白名单主机允许的连接数。",
+      "D": "`Firewall_access_suspicious` 是在 `DETECTING` 模式下记录为可疑用户的语句数。"
     },
     "answers": [
-      "C"
+      "D"
     ],
-    "summary": "### 选项分析\n- **A. 执行 `mysqladmin flush-logs`**：此命令用于刷新二进制日志或通用查询日志，并非解决 InnoDB 日志文件大小不匹配问题的有效方法，因此不正确。\n- **B. 创建大小为 26214400 的新 `ib_logfile0` 文件**：手动创建符合配置要求的日志文件虽然理论上可行，但不符合最佳实践，可能引发其他潜在问题，因此不推荐。\n- **C. 从文件系统中删除 `ib_logfile0` 和 `ib_logfile1` 文件**：删除现有日志文件后，MySQL 启动时会根据配置文件重新生成正确的日志文件，这是解决该问题的标准方法，因此正确。\n- **D. 首先运行 `mysqld --initialize` 来刷新 `ib_logfile` 的大小**：此操作会重新初始化整个数据目录，可能导致数据丢失，风险较高，通常仅在极端情况下使用，因此不推荐。\n\n### 考点总结\n本题考查了 MySQL 数据库管理员对 InnoDB 存储引擎日志文件管理的理解和故障排查能力，涉及的知识点包括：\n- InnoDB 日志文件的作用及其与配置文件的关系。\n- 解决 InnoDB 日志文件大小不匹配问题的最佳实践。\n- MySQL 启动失败时的常见错误日志分析。",
-    "suggestion": "### 应试技巧\n1. **精准定位问题**：仔细阅读错误日志，快速识别问题的核心（如本题中的日志文件大小不匹配）。\n2. **排除干扰项**：结合考试大纲和实际经验，优先排除明显无关或高风险的选项（如 A 和 D）。\n3. **熟悉最佳实践**：掌握官方推荐的操作方法（如删除日志文件让 MySQL 自动重建），避免选择过于激进或复杂的解决方案。\n\n### 学习建议\n1. **深入理解 InnoDB 架构**：学习 InnoDB 如何存储数据和日志，重点掌握重做日志文件的作用及管理。\n2. **模拟实际场景**：通过实验环境模拟常见的 MySQL 启动失败问题，熟悉错误日志的解读和解决方案。\n3. **复习考试大纲**：重点关注“Server Installation and Configuration”和“Monitoring and Maintenance”模块，这些内容常出现在 OCP 考试中。"
+    "summary": "### 选项分析\n- **A.** 正确性有限。虽然 `Firewall_access_denied` 的确表示被拒绝的次数，但其范围不仅限于“连接尝试”，还包括因安全规则而被拒绝的查询操作。\n- **B.** 错误。`Firewall_cached_entries` 表示 MySQL Enterprise Firewall 缓存中的条目数量，与查询缓存或 `DETECTING` 模式无关。\n- **C.** 错误。`Firewall_access_granted` 表示防火墙允许的连接或查询次数，而非特指白名单主机的连接。\n- **D.** 正确。`Firewall_access_suspicious` 明确表示在 `DETECTING` 模式下标记为可疑的语句数，符合题目要求。\n\n### 考点总结\n本题考查考生对 MySQL Enterprise Firewall 状态变量的理解，尤其是不同模式（如 `PROTECTING` 和 `DETECTING`）下的行为差异以及各状态变量的具体含义。",
+    "suggestion": "### 应试技巧\n1. **审题严谨**：注意题目中的细节，例如变量名和模式描述，避免因粗心而误解。\n2. **排除法优先**：对于多选题或易混淆的单选题，先排除明显错误的选项以缩小范围。\n3. **理解机制**：MySQL Enterprise Firewall 的工作原理是高频考点，建议熟练掌握其运行模式及相关变量。\n\n### 学习建议\n1. **熟悉官方文档**：MySQL 官方文档对防火墙模块的说明非常详尽，可作为权威参考资料。\n2. **实践验证**：通过实际操作 MySQL 数据库，观察相关状态变量的变化，加深理解。\n3. **模拟练习**：结合考试大纲中的其他高频考点（如安全性、性能优化等），进行综合练习以提高应试能力。"
   },
   {
     "question": "请查看下列常规查询日志中的这些条目：\n\n| Time                          | Id  | Command       | Argument                                                                 |\n|-------------------------------|-----|---------------|-------------------------------------------------------------------------|\n| 2019-12-17T00:36:23.389450Z   | 24  | Connect       | root@localhost on mydb using SSL/TLS                                   |\n| 2019-12-17T00:36:23.389754Z   | 24  | Query         | select @@version_comment limit 1                                       |\n| 2019-12-17T00:36:23.929519Z   | 25  | Connect       | root@localhost on mydb using SSL/TLS                                   |\n| 2019-12-17T00:36:23.929846Z   | 25  | Query         | select @@version_comment limit 1                                       |\n| 2019-12-17T00:36:27.633082Z   | 24  | Query         | START TRANSACTION                                                      |\n| 2019-12-17T00:36:30.321657Z   | 24  | Query         | UPDATE t1 SET val = 1 WHERE ID = 130                                  |\n| 2019-12-17T00:36:32.417433Z   | 25  | Query         | START TRANSACTION                                                      |\n| 2019-12-17T00:36:33.617642Z   | 25  | Query         | UPDATE t2 SET val = 5 WHERE ID = 3805                                 |\n| 2019-12-17T00:36:36.049458Z   | 25  | Query         | UPDATE t1 SET val = 10 WHERE ID = 130                                 |\n| 2019-12-17T00:36:38.513674Z   | 24  | Query         | UPDATE t2 SET val = 42 WHERE ID = 3805                                |\n\n所有 `UPDATE` 语句均引用了表中包含行的键。以下哪项描述了语句序列的结果？",
